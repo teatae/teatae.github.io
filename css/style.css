@@ -1,23 +1,29 @@
 body {
-  background-color: rgba(230, 230, 230, 1);
+  background-color: #212121;
+  color: white;
   padding: 0 30px 30px 30px;
   margin: 0;
+  font-size: 20px;
+  font-family: 'VT323';
 }
 
 h1 {
   margin: 0 -30px 0px -30px;
   padding: 0 30px;
-  font-weight: 300;
-  font-family: 'VT323';
-  color: white;
-  /*background: #C1D72E;*/
+  font-size: 40px;
+  font-weight: 100;
   background: #323b41;
+}
+
+.red {
+  color: red;
 }
 
 #header {
   position: sticky;
   top: 0;
   z-index:100;
+  margin-bottom: 10px;
 }
 
 #prevnext {

@@ -58,27 +58,27 @@ h1 {
   animation: blink-caret .5s step-end infinite;
 }
 
-h1, #typed-static-1 {
-  font-size: 5vh;
-}
-
-.typewriter {
-  font-size: 8vh;
-}
-
-body {
-  font-size: 3vh;
-}
-
 /* The typewriter cursor effect */
 @keyframes blink-caret {
   from, to { color: transparent }
   50% { color: orange }
 }
 
+h1, #typed-static-1 {
+  font-size: 28px
+}
+
+.typewriter {
+  font-size: 38px;
+}
+
+body {
+  font-size: 21px;
+}
+
 .fa {
-  font-size: 30px;
-  width: 30px;
+  font-size: 21px;
+  width: 21px;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;

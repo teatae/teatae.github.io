@@ -1,18 +1,22 @@
+* {
+  color:#fff;
+  text-decoration: none;
+}
+
 body {
   background-color: #212121;
   color: white;
   padding: 0 30px 30px 30px;
   margin: 0;
-  font-size: 20px;
-  font-family: 'VT323';
+  font-family: 'VT323', monospace;
 }
 
 h1 {
   margin: 0 -30px 0px -30px;
   padding: 0 30px;
-  font-size: 40px;
   font-weight: 100;
   background: #323b41;
+  text-transform: lowercase;
 }
 
 .red {
@@ -26,233 +30,65 @@ h1 {
   margin-bottom: 10px;
 }
 
-#prevnext {
-  position: sticky;
-  top: 48px;
-  background-color: rgba(230, 230, 230, 1);
-  z-index:100;
-}
-
-output, fieldset {
-  font-size: 13.5px;
-}
-
-fieldset {
-  margin-top: 5px;
-}
-
-input, button {
-  font-size: 11.5px;
-  margin: 8px;
-  padding: 5px;
-  height: 28px;
-  border-radius: 2px;
-  background-color: white;
-  border-style: hidden;
-}
-
-select {
-  font-size: 12px;
-}
-
-input {
-  width:  195px;
-  text-indent: 2px;
-}
-
-button {
-  transition-duration: 0.4s;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.25);
-}
-
-#btnSubmit:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.82);
-}
-
-#btnResetLanes:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.82);
-}
-
-#btnResetCarriers:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.82);
-}
-
-label {
-  margin: 10px;
-  padding: 0px;
-  height: 40px;
-}
-
-select {
-  margin: 10px 10px 10px -10px;
-  height: 38px;
-  text-indent: 4px;
-  border-radius: 2px;
-  border-style: hidden;
-}
-
-select:hover{
-  cursor: pointer;
-}
-
-.slider {
-  -webkit-appearance: none;
-  height: 0px;
-  width: 150px;
-  background:rgba(107,142,35, 0.25);
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%; 
-  background: #C1D72E;
-  cursor: pointer;
-  outline: rgba(107, 142, 35, 0.5) solid 1px;
-  transition-duration: 0.4s;
-}
-
-.slider::-webkit-slider-thumb:hover {
-  background: rgba(107,142,35, 1);
-  cursor: pointer;
-}
-
-table {
-  border-radius: 4px;
-  padding: .5em;
-  font-size: 13px;
-  background-color: #F8F8F8;
-  margin-top: 10px;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-thead td {
-  background-color: #F8F8F8;
-  position: sticky;
-  top: 97px;
-  box-shadow: inset 0 -1px 0 black;
-  border : 1px solid #000;
-  border-collapse: separate;
-  font-weight: 700;
-  padding: 4px;
-}
-
-tbody td {
-  border: 1px solid darkgray;
-  padding: 3px;
-}
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 92px;
-  background-color: #4D5D53;
-  color: #fff;
+.typewriter {
   text-align: center;
-  border-radius: 6px;
-  padding: 4px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -46px;
-  opacity: 0;
-  transition: opacity 0.3s;
+  text-transform: uppercase;
 }
 
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -9px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #505050 transparent transparent transparent;
+.typewriter span {
+  font-family: 'VT323', monospace;
+  /* font-family: 'Waiting for the Sunrise', cursive; */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .1em; /* Adjust as needed */
+  display: inline-table;
 }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
+#typed-static-1 {
+  display: block;
 }
 
-form {
-  margin-top: 1vh;
-  border-radius: 20px;
-  border: 1px solid #91a716;;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
-  font-size: 11px;
-  background-color: #F8F8F8;
+#typed-main {
+  color: #e6db74;
+  text-transform: lowercase;
 }
 
-.error {
-  color: #0c0101;
-  padding: 10px;
-  width: 95%;
-  border-radius: 5px;
-  margin: 20px auto;
+#typed-caret {
+  color: orange;
+  animation: blink-caret .5s step-end infinite;
 }
 
-.loginform {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  flex-direction: column;
+h1, #typed-static-1 {
+  font-size: 5vh;
 }
 
-.loginInput {
-  text-indent: 0;
+.typewriter {
+  font-size: 8vh;
 }
 
-.depship {
-  background-color: #C1D72E;
+body {
+  font-size: 3vh;
 }
 
-.pickd {
-  background-color: #E9EC6B;
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { color: transparent }
+  50% { color: orange }
 }
 
-.called {
-  background-color: #FF7F7F;
+.fa {
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
 }
 
-.phone{
-  transition:  0.4s;
+.fa:hover {
+  transition-duration: 0.5s;
+  opacity: 0.7;
 }
 
-.phone:hover {
-  background-color: rgba(255,175,0,0.6);
-  cursor: pointer;
-}
-
-.nottext:hover {
-  cursor: context-menu;
-}
-
-.carrier {
-  background-color: rgba(107, 142, 35, 0.15);
-}
-
-#truck {
-  user-drag: none; 
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+.fa-github {
+  color: white;
 }

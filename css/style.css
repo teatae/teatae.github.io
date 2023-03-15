@@ -65,15 +65,15 @@ h1 {
 }
 
 h1, #typed-static-1 {
-  font-size: 38px
+  font-size: 65px
 }
 
 .typewriter {
-  font-size: 45px;
+  font-size: 80px;
 }
 
 body {
-  font-size: 25px;
+  font-size: 60px;
 }
 
 .fa {
@@ -91,4 +91,32 @@ body {
 
 .fa-github {
   color: white;
+}
+
+@media only screen and (min-device-width: 480px) {
+    h1, #typed-static-1 {
+    font-size: 65px
+  }
+
+  .typewriter {
+    font-size: 80px;
+  }
+
+  body {
+    font-size: 60px;
+  }
+
+}
+
+@media only screen and (min-device-width: 768px) {
+  h1, #typed-static-1 {
+    font-size: 38px
+  }
+  .typewriter {
+    font-size: 45px;
+  }
+
+  body {
+    font-size: 25px;
+  }
 }

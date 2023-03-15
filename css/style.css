@@ -109,14 +109,10 @@ body {
 }
 
 @media only screen and (min-device-width: 768px) {
-  h1, #typed-static-1 {
-    font-size: 38px
+  body, h1, #typed-static-1 {
+    font-size: 28px
   }
   .typewriter {
-    font-size: 45px;
-  }
-
-  body {
-    font-size: 25px;
+    font-size: 38px;
   }
 }

@@ -1,33 +1,58 @@
 * {
   color:#fff;
   text-decoration: none;
-}
-
-body {
   background-color: #212121;
-  color: white;
-  padding: 0 30px 30px 30px;
-  margin: 0;
   font-family: 'VT323', monospace;
-}
-
-h1 {
-  margin: 0 -30px 0px -30px;
-  padding: 0 30px;
-  font-weight: 100;
-  background: #323b41;
-  text-transform: lowercase;
 }
 
 .red {
   color: red;
 }
 
-#header {
+body {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  margin: 0 -14px 0 -36px;
+  padding: 0 36px;
+  font-weight: 100;
+  background: #323b41;
+  text-transform: lowercase;
+}
+
+header {
   position: sticky;
   top: 0;
   z-index:100;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+.linenumbers {
+  height: 100%;
+  width: 22px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding-top: 30px;
+}
+
+.linenumbers span {
+  padding: 1px;
+  color: #818181;
+  display: block;
+}
+
+.linenumbers span:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  padding: 0 14px;
+  margin-left: 22px; /* Same as the width of the linenumbers */
 }
 
 .typewriter {
@@ -64,18 +89,6 @@ h1 {
   50% { color: orange }
 }
 
-h1, #typed-static-1 {
-  font-size: 65px
-}
-
-.typewriter {
-  font-size: 80px;
-}
-
-body {
-  font-size: 60px;
-}
-
 .fa {
   text-align: center;
   text-decoration: none;
@@ -91,25 +104,30 @@ body {
   color: white;
 }
 
+h1, body, #typed-static-1, .linenumbers span {
+  font-size: 24px;
+}
+
+.typewriter {
+  font-size: 26px;
+}
+
 @media only screen and (min-device-width: 480px) {
-    h1, #typed-static-1 {
-    font-size: 65px
+  h1, body, #typed-static-1, .linenumbers span {
+    font-size: 24px;
   }
 
   .typewriter {
-    font-size: 80px;
-  }
-
-  body {
-    font-size: 60px;
+    font-size: 26px;
   }
 
 }
 
 @media only screen and (min-device-width: 768px) {
-  body, h1, #typed-static-1 {
+  body, h1, #typed-static-1, .linenumbers span {
     font-size: 28px
   }
+
   .typewriter {
     font-size: 38px;
   }

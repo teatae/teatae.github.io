@@ -1,7 +1,6 @@
-var TxtType = function(el, typedmain, toRotate, period) {
+var TxtType = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
-    this.typedmain = typedmain;
     this.loopNum = 0;
     this.period = parseInt(period, 10) || 2000;
     this.txt = '';
@@ -14,12 +13,12 @@ TxtType.prototype.tick = function() {
     var fullTxt = this.toRotate[i];
 
     if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
     } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
 
-    this.typedmain.innerHTML = this.txt;
+    this.el.innerHTML = this.txt;
 
     var that = this;
     var delta = 200 - Math.random() * 100;
@@ -27,38 +26,37 @@ TxtType.prototype.tick = function() {
     if (this.isDeleting) { delta /= 2; }
 
     if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
+        delta = this.period;
+        this.isDeleting = true;
     } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
     }
 
     setTimeout(function() {
-    that.tick();
+        that.tick();
     }, delta);
 };
 
 window.onload = function() {
     var elements = document.getElementsByClassName('typewrite');
-    var typedmain = document.getElementById('typed-main');
+    var el = document.getElementById('typed-main');
     for (var i=0; i<elements.length; i++) {
         var toRotate = elements[i].getAttribute('data-type');
         var period = elements[i].getAttribute('data-period');
         if (toRotate) {
-          new TxtType(elements[i], typedmain, JSON.parse(toRotate), period);
+          new TxtType(el, JSON.parse(toRotate), period);
         }
     }
-    var old = document.getElementById('old');
 
-    let date_1 = new Date('03/13/2023');
-    let date_2 = new Date();
-
-    const days = (date_1, date_2) =>{
-    	let difference = date_1.getTime() - date_2.getTime();
-    	let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
-    	return TotalDays;
+    var days = document.getElementById('days');
+    let date1 = new Date();
+    let date2 = new Date('03/13/2023');
+    const deltaDays = (date1, date2) => {
+    	let diffMs = date1.getTime() - date2.getTime();
+    	let diffDays = Math.floor(diffMs / (24 * 60 * 60 * 1000));
+    	return diffDays;
     }
-    old.innerHTML = -days(date_1, date_2);
+    days.innerHTML = deltaDays(date1, date2);
 };

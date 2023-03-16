@@ -11,6 +11,14 @@
   color: red;
 }
 
+.purple {
+  color: #9a99ff;
+}
+
+.blue {
+  color: rgb(40,116,252) 100%;
+}
+
 h1 {
   margin: 0 -14px 0 -36px;
   padding: 0 36px;
@@ -60,7 +68,7 @@ header {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .1em; /* Adjust as needed */
-  display: inline-table;
+  display: inline;
 }
 
 #typed-static-1 {

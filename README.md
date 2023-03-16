@@ -5,5 +5,5 @@ Shortcuts for me:
 cd C:\Temp\TAE\Projects\teatae\teatae.github.io  
 git pull  
 git add --all  
-git commit -m "something commit"  
+git commit -m "a commit"  
 git push -u origin main  

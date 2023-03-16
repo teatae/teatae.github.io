@@ -3,15 +3,12 @@
   text-decoration: none;
   background-color: #212121;
   font-family: 'VT323', monospace;
+  margin: 0;
+  padding: 0;
 }
 
 .red {
   color: red;
-}
-
-body {
-  padding: 0;
-  margin: 0;
 }
 
 h1 {
@@ -41,7 +38,6 @@ header {
 }
 
 .linenumbers span {
-  padding: 1px;
   color: #818181;
   display: block;
 }
@@ -51,6 +47,7 @@ header {
 }
 
 .main {
+  margin: 0;
   padding: 0 14px;
   margin-left: 22px; /* Same as the width of the linenumbers */
 }
@@ -116,18 +113,15 @@ h1, body, #typed-static-1, .linenumbers span {
   h1, body, #typed-static-1, .linenumbers span {
     font-size: 24px;
   }
-
   .typewriter {
     font-size: 26px;
   }
-
 }
 
 @media only screen and (min-device-width: 768px) {
   body, h1, #typed-static-1, .linenumbers span {
     font-size: 28px
   }
-
   .typewriter {
     font-size: 38px;
   }

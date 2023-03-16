@@ -53,7 +53,6 @@ header {
 
 .typewriter {
   text-align: center;
-  text-transform: uppercase;
 }
 
 .typewriter span {
@@ -66,6 +65,11 @@ header {
 
 #typed-static-1 {
   display: block;
+  text-transform: uppercase;
+}
+
+.change-font {
+  font-family: 'Waiting for the Sunrise', cursive; 
 }
 
 #typed-main {
@@ -84,10 +88,6 @@ header {
   50% { color: orange }
 }
 
-.old {
-  font-size: 18px;
-}
-
 .fa {
   text-align: center;
   text-decoration: none;
@@ -99,12 +99,14 @@ header {
   opacity: 0.7;
 }
 
-.fa-github, .fa-facebook, .fa-instagram, .fa-linkedin {
+.fa-github-alt, .fa-facebook, .fa-instagram, .fa-linkedin, .fa-home, .fa-cloud, .fa-code {
   color: white;
 }
 
-h1, body, #typed-static-1, .linenumbers span {
-  font-size: 23px;
+.hidden { display:none; }
+
+body, h1, #typed-static-1, #typedtext, .linenumbers span, .old {
+  font-size: 24px;
 }
 
 .typewriter {
@@ -112,8 +114,8 @@ h1, body, #typed-static-1, .linenumbers span {
 }
 
 @media only screen and (min-device-width: 480px) {
-  h1, body, #typed-static-1, .linenumbers span {
-    font-size: 23px;
+  body, h1, #typed-static-1, #typedtext, .linenumbers span, .old {
+    font-size: 24px;
   }
   .typewriter {
     font-size: 26px;
@@ -121,7 +123,7 @@ h1, body, #typed-static-1, .linenumbers span {
 }
 
 @media only screen and (min-device-width: 768px) {
-  body, h1, #typed-static-1, .linenumbers span {
+  body, h1, #typed-static-1, #typedtext, .linenumbers span, .old {
     font-size: 28px
   }
   .typewriter {

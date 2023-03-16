@@ -95,7 +95,7 @@ const fetchWeather = async () => {
     const apiKey = "";
     const city = "montreal";
     const unit = "metric";
-    const request_url = "http://api.openweathermap.org/data/2.5/weather?appid=" + apiKey + "&q=" + city + "&units=" + unit + "&mode=json";
+    const request_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + apiKey + "&q=" + city + "&units=" + unit + "&mode=json";
     const response = await fetch(request_url);
     const myJson = await response.json(); //extract JSON from the http response
     console.log(myJson);

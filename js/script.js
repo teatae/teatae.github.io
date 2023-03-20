@@ -76,21 +76,8 @@ var txtTypeAbout = function() {
 }
 
 function startTime() {
-    const today = new Date();
-    let h = today.getHours() % 12 || 12 ;
-    let m = today.getMinutes();
-    let s = today.getSeconds();
-    let ampm = today.getHours() >= 12 ? 'PM' : 'AM';
-    h = checkTime(h);
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('clock').innerHTML =  h + ":" + m + ":" + s + " " + ampm;
+    document.getElementById('clock').innerHTML = (new Date().toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }));
     setTimeout(startTime, 1000);
-}
-
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
 }
 
 const fetchWeather = async () => {

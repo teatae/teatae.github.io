@@ -81,6 +81,7 @@ function startTime() {
     let m = today.getMinutes();
     let s = today.getSeconds();
     let ampm = today.getHours() >= 12 ? 'PM' : 'AM';
+    h = checkTime(h);
     m = checkTime(m);
     s = checkTime(s);
     document.getElementById('clock').innerHTML =  h + ":" + m + ":" + s + " " + ampm;

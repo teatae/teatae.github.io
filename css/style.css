@@ -16,7 +16,15 @@
 }
 
 .blue {
-  color: rgb(40,116,252) 100%;
+  color: #2FCBEF;
+}
+
+.yellow {
+  color: #e6db74;
+}
+
+.grey {
+  color:#808080;
 }
 
 h1 {
@@ -77,7 +85,6 @@ header {
 
 #typed-static-1 {
   display: block;
-  text-transform: uppercase;
 }
 
 .change-font {
@@ -85,7 +92,6 @@ header {
 }
 
 #typed-main {
-  color: #e6db74;
   text-transform: lowercase;
 }
 
@@ -111,7 +117,7 @@ header {
   opacity: 0.7;
 }
 
-.fa-github-alt, .fa-facebook, .fa-instagram, .fa-linkedin, .fa-home, .fa-cloud, .fa-code {
+.fa-github-alt, .fa-id-card, .fa-facebook, .fa-comment, .fa-linkedin, .fa-home, .fa-cloud, .fa-code {
   color: white;
 }
 

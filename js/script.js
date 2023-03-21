@@ -63,7 +63,7 @@ txtTypeHome.prototype.tick = function() {
     }, delta);
 };
 
-
+/*
 // set up text to print, each item in array is new line
 var aboutText = new Array("Université de Montréal Graduate with a Bachelor's degree focused in Computer Science.",
     "Detail oriented, sharp, driven and eager to learn.",
@@ -98,6 +98,7 @@ var txtTypeAbout = function() {
         setTimeout("txtTypeAbout()", iSpeed);
     }
 }
+*/
 
 function startTime() {
     document.getElementById('clock').innerHTML = (new Date().toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }));

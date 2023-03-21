@@ -1,3 +1,27 @@
+const crypt = (salt, text) => {
+  const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
+  const byteHex = (n) => ("0" + Number(n).toString(16)).substr(-2);
+  const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
+
+  return text
+    .split("")
+    .map(textToChars)
+    .map(applySaltToChar)
+    .map(byteHex)
+    .join("");
+};
+
+const dcrypt = (salt, encoded) => {
+  const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
+  const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
+  return encoded
+    .match(/.{1,2}/g)
+    .map((hex) => parseInt(hex, 16))
+    .map(applySaltToChar)
+    .map((charCode) => String.fromCharCode(charCode))
+    .join("");
+};
+
 var txtTypeHome = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
@@ -80,11 +104,11 @@ function startTime() {
     setTimeout(startTime, 1000);
 }
 
+const x = 'lmao';
 const fetchWeather = async () => {
-    const apiKey = "";
     const city = "montreal";
     const unit = "metric";
-    const request_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + apiKey + "&q=" + city + "&units=" + unit + "&mode=json";
+    const request_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + dcrypt(x, "38366e3f696e3e36386c3c386e3a3c6e3d3e383b693c3d696e366d3a366c3b36") + "&q=" + city + "&units=" + unit + "&mode=json";
     const response = await fetch(request_url);
     const myJson = await response.json(); //extract JSON from the http response
     console.log(myJson);
@@ -103,7 +127,7 @@ const fetchWeather = async () => {
                 case '1': imageData = "partlycloudy"; break;
                 default: imageData = "cloudy"; break;
             } break;
-            default: imageData = "no"; break;
+            default: imageData = "unknown"; break;
         }
         document.getElementById('name').innerHTML = myJson.name;
         document.getElementById('weather').src = "assets/"+imageData+".png";

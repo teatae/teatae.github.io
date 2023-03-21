@@ -59,6 +59,10 @@ header {
   margin-left: 22px; /* Same as the width of the linenumbers */
 }
 
+#name {
+  text-transform: uppercase;
+}
+
 .typewriter {
   text-align: center;
 }

@@ -154,6 +154,10 @@ function search(ele) {
     }
 }
 
+function fetchMobileWeather(ele) {
+    fetchWeather(ele.value);
+}
+
 window.onload = function() {
     var elements = document.getElementsByClassName('typewrite');
     var el = document.getElementById('typed-main');

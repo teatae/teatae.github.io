@@ -106,8 +106,8 @@ function startTime() {
 }
 
 const x = 'lmao';
-const fetchWeather = async () => {
-    const city = "montreal";
+const fetchWeather = async (city) => {
+    if (city === undefined || city === null) city="montreal";
     const unit = "metric";
     const request_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + dcrypt(x, "38366e3f696e3e36386c3c386e3a3c6e3d3e383b693c3d696e366d3a366c3b36") + "&q=" + city + "&units=" + unit + "&mode=json";
     const response = await fetch(request_url);
@@ -132,11 +132,25 @@ const fetchWeather = async () => {
         }
         document.getElementById('name').innerHTML = myJson.name;
         document.getElementById('weatherImg').src = "assets/"+imageData+".png";
-        document.getElementById('description').innerHTML = imageData;
+        if (imageData == "partlycloudy") {
+            document.getElementById('description').innerHTML = "partly cloudy";
+        } else {
+            document.getElementById('description').innerHTML = imageData;
+        }
         document.getElementById('temp').innerHTML = myJson.main.temp+" °C";
         document.getElementById('feelsLike').innerHTML = myJson.main.feels_like+" °C";
     } else {
-        document.getElementById('description').innerHTML = "configuring API secret with AWS";
+        document.getElementById('name').innerHTML = "Input does not exist";
+        document.getElementById('weatherImg').src = "assets/unknown.png";
+        document.getElementById('description').innerHTML = "Try again";
+        document.getElementById('temp').innerHTML = "";
+        document.getElementById('feelsLike').innerHTML = "";
+    }
+}
+
+function search(ele) {
+    if(event.key === 'Enter') {
+        fetchWeather(ele.value);
     }
 }
 

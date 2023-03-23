@@ -87,8 +87,14 @@ header {
   display: inline;
 }
 
-#typed-static-1 {
+.typed-static-1 {
   display: block;
+}
+
+.typed-static-2 {
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .change-font {
@@ -127,7 +133,7 @@ header {
 
 .hidden { display:none; }
 
-body, h1, #typed-static-1, #typedtext, .linenumbers span, .old {
+body, h1, .typed-static-1, #typedtext, .linenumbers span, .old {
   font-size: 24px;
 }
 
@@ -136,7 +142,7 @@ body, h1, #typed-static-1, #typedtext, .linenumbers span, .old {
 }
 
 @media only screen and (min-device-width: 480px) {
-  body, h1, #typed-static-1, #typedtext, .linenumbers span, .old {
+  body, h1, .typed-static-1, #typedtext, .linenumbers span, .old {
     font-size: 24px;
   }
   .typewriter {
@@ -145,7 +151,7 @@ body, h1, #typed-static-1, #typedtext, .linenumbers span, .old {
 }
 
 @media only screen and (min-device-width: 768px) {
-  body, h1, #typed-static-1, #typedtext, .linenumbers span, .old {
+  body, h1, .typed-static-1, #typedtext, .linenumbers span, .old {
     font-size: 28px
   }
   .typewriter {

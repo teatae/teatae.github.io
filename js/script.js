@@ -107,8 +107,7 @@ function startTime() {
 
 const x = 'lmao';
 const fetchWeather = async (city, force) => {
-    if (city === undefined || city === null || city == "") city="montreal";
-    if (force || (document.getElementById('name').innerHTML.toLowerCase() !== city.toLowerCase())) {
+    if (city !== undefined && city !== null && city !=="" && (force || (document.getElementById('name').innerHTML.toLowerCase() !== city.toLowerCase()))) {
         const unit = "metric";
         const request_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + dcrypt(x, "38366e3f696e3e36386c3c386e3a3c6e3d3e383b693c3d696e366d3a366c3b36") + "&q=" + city + "&units=" + unit + "&mode=json";
         const response = await fetch(request_url);
@@ -213,7 +212,7 @@ window.onload = function() {
 
     if (document.getElementById('clock')) { startTime(); }
 
-    if (document.getElementById('weather')) { fetchWeather("", true); }
+    if (document.getElementById('weather')) { fetchWeather("montreal", true); }
     /*
     var days = document.getElementById('days');
     let date1 = new Date();

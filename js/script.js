@@ -140,7 +140,7 @@ const fetchWeather = async (city) => {
         document.getElementById('temp').innerHTML = myJson.main.temp+" °C";
         document.getElementById('feelsLike').innerHTML = myJson.main.feels_like+" °C";
     } else {
-        document.getElementById('name').innerHTML = "Input does not exist";
+        document.getElementById('name').innerHTML = "City is not recognized";
         document.getElementById('weatherImg').src = "assets/unknown.png";
         document.getElementById('description').innerHTML = "Try again";
         document.getElementById('temp').innerHTML = "";

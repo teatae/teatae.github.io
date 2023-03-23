@@ -106,56 +106,58 @@ function startTime() {
 }
 
 const x = 'lmao';
-const fetchWeather = async (city) => {
-    if (city === undefined || city === null) city="montreal";
-    const unit = "metric";
-    const request_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + dcrypt(x, "38366e3f696e3e36386c3c386e3a3c6e3d3e383b693c3d696e366d3a366c3b36") + "&q=" + city + "&units=" + unit + "&mode=json";
-    const response = await fetch(request_url);
-    const myJson = await response.json(); //extract JSON from the http response
-    console.log(myJson);
-    if (response.ok) {
-        var imageData = "";
-        var weatherId = myJson.weather[0].id+"";
-            switch (weatherId.charAt(0)) {
-                case '2': imageData = "stormy"; break;
-                case '3': imageData = "rainy"; break;
-                case '5': imageData = "rainy"; break;
-                case '6': imageData = "snowy"; break;
-                case '7': imageData = "foggy"; break;
-                case '8':
-                switch (weatherId.charAt(2)) {
-                case '0': imageData = "sunny"; break;
-                case '1': imageData = "partlycloudy"; break;
-                default: imageData = "cloudy"; break;
-            } break;
-            default: imageData = "unknown"; break;
-        }
-        document.getElementById('name').innerHTML = myJson.name;
-        document.getElementById('weatherImg').src = "assets/"+imageData+".png";
-        if (imageData == "partlycloudy") {
-            document.getElementById('description').innerHTML = "partly cloudy";
+const fetchWeather = async (city, force) => {
+    if (city === undefined || city === null || city == "") city="montreal";
+    if (force || (document.getElementById('name').innerHTML.toLowerCase() !== city.toLowerCase())) {
+        const unit = "metric";
+        const request_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + dcrypt(x, "38366e3f696e3e36386c3c386e3a3c6e3d3e383b693c3d696e366d3a366c3b36") + "&q=" + city + "&units=" + unit + "&mode=json";
+        const response = await fetch(request_url);
+        const myJson = await response.json(); //extract JSON from the http response
+        console.log(myJson);
+        if (response.ok) {
+            var imageData = "";
+            var weatherId = myJson.weather[0].id+"";
+                switch (weatherId.charAt(0)) {
+                    case '2': imageData = "stormy"; break;
+                    case '3': imageData = "rainy"; break;
+                    case '5': imageData = "rainy"; break;
+                    case '6': imageData = "snowy"; break;
+                    case '7': imageData = "foggy"; break;
+                    case '8':
+                    switch (weatherId.charAt(2)) {
+                    case '0': imageData = "sunny"; break;
+                    case '1': imageData = "partlycloudy"; break;
+                    default: imageData = "cloudy"; break;
+                } break;
+                default: imageData = "unknown"; break;
+            }
+            document.getElementById('name').innerHTML = myJson.name;
+            document.getElementById('weatherImg').src = "assets/"+imageData+".png";
+            if (imageData == "partlycloudy") {
+                document.getElementById('description').innerHTML = "partly cloudy";
+            } else {
+                document.getElementById('description').innerHTML = imageData;
+            }
+            document.getElementById('temp').innerHTML = myJson.main.temp+" °C";
+            document.getElementById('feelsLike').innerHTML = myJson.main.feels_like+" °C";
         } else {
-            document.getElementById('description').innerHTML = imageData;
+            document.getElementById('name').innerHTML = "City is not recognized";
+            document.getElementById('weatherImg').src = "assets/unknown.png";
+            document.getElementById('description').innerHTML = "Try again";
+            document.getElementById('temp').innerHTML = "";
+            document.getElementById('feelsLike').innerHTML = "";
         }
-        document.getElementById('temp').innerHTML = myJson.main.temp+" °C";
-        document.getElementById('feelsLike').innerHTML = myJson.main.feels_like+" °C";
-    } else {
-        document.getElementById('name').innerHTML = "City is not recognized";
-        document.getElementById('weatherImg').src = "assets/unknown.png";
-        document.getElementById('description').innerHTML = "Try again";
-        document.getElementById('temp').innerHTML = "";
-        document.getElementById('feelsLike').innerHTML = "";
     }
 }
 
 function search(ele) {
     if(event.key === 'Enter') {
-        fetchWeather(ele.value);
+        fetchWeather(ele.value, true);
     }
 }
 
 function fetchMobileWeather(ele) {
-    fetchWeather(ele.value);
+    fetchWeather(ele.value, false);
 }
 
 window.onload = function() {
@@ -211,7 +213,7 @@ window.onload = function() {
 
     if (document.getElementById('clock')) { startTime(); }
 
-    if (document.getElementById('weather')) { fetchWeather(); }
+    if (document.getElementById('weather')) { fetchWeather("", true); }
     /*
     var days = document.getElementById('days');
     let date1 = new Date();

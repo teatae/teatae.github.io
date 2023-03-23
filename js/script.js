@@ -131,7 +131,7 @@ const fetchWeather = async () => {
             default: imageData = "unknown"; break;
         }
         document.getElementById('name').innerHTML = myJson.name;
-        document.getElementById('weather').src = "assets/"+imageData+".png";
+        document.getElementById('weatherImg').src = "assets/"+imageData+".png";
         document.getElementById('description').innerHTML = imageData;
         document.getElementById('temp').innerHTML = myJson.main.temp+" °C";
         document.getElementById('feelsLike').innerHTML = myJson.main.feels_like+" °C";
@@ -143,6 +143,42 @@ const fetchWeather = async () => {
 window.onload = function() {
     var elements = document.getElementsByClassName('typewrite');
     var el = document.getElementById('typed-main');
+    if (el) {
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new txtTypeHome(el, JSON.parse(toRotate), period);
+            }
+        }        
+    }
+
+    var elements = document.getElementsByClassName('typewrite1');
+    var el = document.getElementById('typed-main1');
+    if (el) {
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new txtTypeHome(el, JSON.parse(toRotate), period);
+            }
+        }        
+    }
+
+    var elements = document.getElementsByClassName('typewrite2');
+    var el = document.getElementById('typed-main2');
+    if (el) {
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new txtTypeHome(el, JSON.parse(toRotate), period);
+            }
+        }        
+    }
+
+    var elements = document.getElementsByClassName('typewrite3');
+    var el = document.getElementById('typed-main3');
     if (el) {
         for (var i=0; i<elements.length; i++) {
             var toRotate = elements[i].getAttribute('data-type');

@@ -4,7 +4,6 @@
   background-color: #212121;
   font-family: 'VT323', monospace;
   margin: 0;
-  padding: 0;
 }
 
 .red {
@@ -28,33 +27,43 @@
 }
 
 .seperator {
-    height: 88vh;
+    height: 100vh;
+}
+
+#page {
+  overflow: hidden;
+  display: grid;
+  grid-template-areas:
+    "head  head"
+    "nav   main";
+  grid-template-columns: 22px 1fr;
+}
+
+#page > header {
+  grid-area: head;
+}
+
+#page > .linenumbers {
+  grid-area: nav;
+  position: fixed;
+  padding-top: 2em;
+}
+
+#page > .main {
+  grid-area: main;
+  padding: 0 14px;
 }
 
 h1 {
-  margin: 0 -14px 0 -36px;
-  padding: 0 36px;
   font-weight: 100;
   background: #323b41;
-  text-transform: lowercase;
 }
 
 header {
   position: sticky;
   top: 0;
   z-index:100;
-  margin-bottom: 5px;
-}
-
-.linenumbers {
-  height: 100%;
-  width: 22px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  padding-top: 30px;
+  margin: 0;
 }
 
 .linenumbers span {
@@ -64,11 +73,6 @@ header {
 
 .linenumbers span:hover {
   color: #f1f1f1;
-}
-
-.main {
-  padding: 0 14px;
-  margin-left: 22px; /* Same as the width of the linenumbers */
 }
 
 #name {

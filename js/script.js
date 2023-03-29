@@ -152,13 +152,13 @@ const fetchWeather = async (city, force) => {
 function search(ele) {
     if(event.key === 'Enter') {
         fetchWeather(ele.value, true);
-        location.href="index#weather";
+        location.href="#weather";
     }
 }
 
 function fetchMobileWeather(ele) {
     fetchWeather(ele.value, false);
-    location.href="index#weather";
+    location.href="#weather";
 }
 
 window.onload = function() {

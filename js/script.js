@@ -215,15 +215,28 @@ window.onload = function() {
     if (document.getElementById('clock')) { startTime(); }
 
     if (document.getElementById('weather')) { fetchWeather("montreal", true); }
-    /*
-    var days = document.getElementById('days');
+
+    
     let date1 = new Date();
-    let date2 = new Date('03/13/2023');
+    let date2 = new Date('04/03/2023');  // April 3 2023
     const deltaDays = (date1, date2) => {
         let diffMs = date1.getTime() - date2.getTime();
         let diffDays = Math.floor(diffMs / (24 * 60 * 60 * 1000));
         return diffDays;
     }
-    days.innerHTML = deltaDays(date1, date2);
-    */
+    var days = "";
+    if (deltaDays(date1, date2) == 0) {
+        days = "resume updated today";
+    } else if (deltaDays(date1, date2) == 1) {
+        days = "resume updated a day ago";
+    } else {
+        days = "resume updated " + deltaDays(date1, date2) + " days ago";
+    }
+
+    var resume1 = document.getElementById('resume1');
+    var resume2 = document.getElementById('resume2');
+    resume1.title = days;
+    resume2.title = days;
+    resume1.alt = days;
+    resume2.alt = days;
 };

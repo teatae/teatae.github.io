@@ -237,6 +237,8 @@ window.onload = function() {
     var resume2 = document.getElementById('resume2');
     resume1.title = days;
     resume2.title = days;
+    resume3.title = days;
     resume1.alt = days;
     resume2.alt = days;
+    resume3.alt = days;
 };

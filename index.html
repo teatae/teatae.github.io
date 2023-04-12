@@ -11,7 +11,20 @@
     <link href='css/style.css' rel='stylesheet'>
     <link rel='icon' href='https://avatars.githubusercontent.com/u/36865465?s=40&v=4'>
     <title>Tae.js</title>
-    <script defer src='js/script.js'></script>
+    
+    <script>
+    function onSdkLoad() {
+        AWS.config.update({
+          accessKeyId: 'configuring',
+          secretAccessKey: 'configuring',
+          region: 'us-east-1'
+        });
+        const lambda = new AWS.Lambda();
+        window.lambda = lambda;
+    }
+    </script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.105.0.min.js" onload="onSdkLoad()"></script>
+    <script src='js/script.js'></script>
 </head>
 
 <body id="page">

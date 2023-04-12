@@ -70,7 +70,6 @@ var aboutText = new Array("Université de Montréal Graduate with a Bachelor's d
     "Experience in improving systems with automation and shell scripting,",
     "Skilled in Python web scraping, Visual Basic for Applications (VBA) and relational databases."
 );
-
 var iSpeed = 22; // time delay of print out
 var iIndex = 0; // start printing array at this posision
 var iArrLength = aboutText[0].length; // the length of the text array
@@ -78,7 +77,6 @@ var iScrollAt = 20; // start scrolling up at this many lines
 var iTextPos = 0; // initialise text position
 var sContents = ''; // initialise contents variable
 var iRow; // initialise current row
-
 var txtTypeAbout = function() {
     sContents =  ' ';
     iRow = Math.max(0, iIndex-iScrollAt);
@@ -105,6 +103,17 @@ function startTime() {
     setTimeout(startTime, 1000);
 }
 
+const fetchWeatherLambda = async (cityVal) => {
+    const params = {
+        FunctionName: 'taeLambdaWeather',
+        Payload: JSON.stringify({ city: cityVal })
+    };
+
+    const result = await window.lambda.invoke(params).promise();
+    const responsePayload = JSON.parse(result.Payload);
+    return responsePayload;
+}
+
 const x = 'lmao';
 const fetchWeather = async (city, force) => {
     if (city !== undefined && city !== null && city !=="" && (force || (document.getElementById('name').innerHTML.toLowerCase() !== city.toLowerCase()))) {
@@ -112,6 +121,8 @@ const fetchWeather = async (city, force) => {
         const request_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + dcrypt(x, "38366e3f696e3e36386c3c386e3a3c6e3d3e383b693c3d696e366d3a366c3b36") + "&q=" + city + "&units=" + unit + "&mode=json";
         const response = await fetch(request_url);
         const myJson = await response.json(); //extract JSON from the http response
+        //const myJson = await fetchWeatherLambda(city); //Using AWS Lambda
+        //if (myJson.cod == 200) {
         console.log(myJson);
         if (response.ok) {
             var imageData = "";

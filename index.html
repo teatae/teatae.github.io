@@ -7,21 +7,32 @@
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='css/style.css' rel='stylesheet'>
     <link rel='icon' href='https://avatars.githubusercontent.com/u/36865465?s=40&v=4'>
     <title>Tae.js</title>
     
     <script>
-    function onSdkLoad() {
-        AWS.config.update({
-          accessKeyId: 'configuring',
-          secretAccessKey: 'configuring',
-          region: 'us-east-1'
-        });
-        const lambda = new AWS.Lambda();
-        window.lambda = lambda;
-    }
+        window.dcrypt = (salt, encoded) => {
+          const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
+          const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
+          return encoded
+            .match(/.{1,2}/g)
+            .map((hex) => parseInt(hex, 16))
+            .map(applySaltToChar)
+            .map((charCode) => String.fromCharCode(charCode))
+            .join("");
+        };
+        function onSdkLoad() {
+            AWS.config.update({
+              accessKeyId: 'configuring',
+              secretAccessKey: 'configuring',
+              region: 'us-east-1'
+            });
+            const lambda = new AWS.Lambda();
+            window.lambda = lambda;
+        }
     </script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.105.0.min.js" onload="onSdkLoad()"></script>
     <script src='js/script.js'></script>
@@ -105,7 +116,8 @@
         <div>
             <a href="#" class="fa fa-home" alt="Home" title="Home"></a> 
             <a href="#aboutme" class="fa fa-id-card" alt="About" title="About"></a> 
-            <a href="#contact" class="fa fa-comment" alt="Contact" title="Contact"></a> 
+            <a href="#contact" class="fa fa-comment" alt="Contact" title="Contact"></a>
+            <a href="#chat" class="fa fa-otter" alt="ChatGPT" title="ChatGPT"></a> 
             <a href="#weather" class="fa fa-cloud" alt="Weather" title="Weather"></a> 
             <a href="#projects" class="fa fa-code" alt="Projects" title="Projects"></a>
         </div>
@@ -190,10 +202,22 @@
             </span>
 
             <div class="seperator"></div>
-            <a id="weather"><br><br></a>
-            <span id="" class="change-font">
-                <span href="" class="typewrite3" data-period="8888" data-type='[ "Weather" ]'>
+            <a id="chat"><br><br></a>
+            <span>
+                <span href="" class="typewrite3" data-period="8888" data-type='[ "Ask me!" ]'>
                 <span id="typed-static">{"</span><span id="typed-main3" class="blue"></span><span id="typed-caret">|</span><span id="typed-static">"}</span></span>
+                <br><br>
+                <div id="chat-container">
+                    <div id="chatlog"></div>
+                    <input type="text" id="input-message" class="typed-static-1 typed-static-2 yellow"  onkeydown="onSendClick(this)" onblur="fetchReplyGPT(this)" placeholder="Ask me anything!" autofocus required minlength="2"/>
+                </div>
+            </span>
+
+            <div class="seperator"></div>
+            <a id="weather"><br><br></a>
+            <span>
+                <span href="" class="typewrite4" data-period="8888" data-type='[ "Weather" ]'>
+                <span id="typed-static">{"</span><span id="typed-main4" class="blue"></span><span id="typed-caret">|</span><span id="typed-static">"}</span></span>
                 <br>
                 <div id="clock"></div>
                 <span id="name" class="purple"></span>

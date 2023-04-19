@@ -11,16 +11,7 @@ const crypt = (salt, text) => {
     .join("");
 };
 
-const dcrypt = (salt, encoded) => {
-  const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
-  const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
-  return encoded
-    .match(/.{1,2}/g)
-    .map((hex) => parseInt(hex, 16))
-    .map(applySaltToChar)
-    .map((charCode) => String.fromCharCode(charCode))
-    .join("");
-};
+const dcrypt = window.dcrypt;
 
 var txtTypeHome = function(el, toRotate, period) {
     this.toRotate = toRotate;
@@ -172,6 +163,110 @@ function fetchMobileWeather(ele) {
     location.href="#weather";
 }
 
+const ai = String(window.dcrypt(x, "7c64223a676a5d597c3d583d697d664b75384a777f3b675b3c4d636d6449457f566e36426b37373c376e5964415a634965467b"));
+const model = 'text-davinci-003';
+const apiUrl = "https://api.openai.com/v1/engines/"+model+"/completions";
+const currDay = new Date();
+var fullLog = "Tae-Suzanne was born in Montréal, Québec. She is chinese and cambodian.\n";
+fullLog = fullLog + "Tae-Suzanne is to be refered as Tae or Suzanne.\n";
+fullLog = fullLog + "Tae has a Bachelor's Degree in Computer Science from Université de Montréal. She attended university from 2018 to December 2022\n";
+fullLog = fullLog + "Tae currently lives in Montréal. Today is "+ currDay + ".\n";
+fullLog = fullLog + "Her email is tae@taetae.ca. Her phone number is (438)765-4320. Her LinkedIn is linkedin.com/in/taesuzanne.\n";
+fullLog = fullLog + "Her contact page is the third icon of her website.\n";
+fullLog = fullLog + "Her GitHub is teatae.\n";
+fullLog = fullLog + "Programming languages that she knows are Python, Julia, HTML, CSS, JavaScript, Java, PHP, VBS, VBA (Excel), SQL (MySQL, DB2) and VHDL.\n";
+fullLog = fullLog + "She is familiar with these operating systems (Windows,Ubuntu) and these IDE (VSCode, Jupyter Notebook, Intellij Idea, Eclipse, Android Studio).\n";
+fullLog = fullLog + "She speaks French and English fluently. She is currently interested in scikit-learn and AWS.\n";
+fullLog = fullLog + "Skilled in automation, shell scripting, Full-Stack, Python, and relational databases, she is experienced in software development and improving systems.\n";
+fullLog = fullLog + "She is currently a Software Developer at FUZE Logistics. She was employed there since June 2021.";
+fullLog = fullLog + "At Fuze Logistics, she built entire internal applications, such as a Web application (used: JS, PHP, REST API, Python), Databases and server (used: MariaDB, Apache),";
+fullLog = fullLog + "an Invoice reporter (used: VBS, VBA, Python, DB2, ETL), some Web scrapers (used: Python, Selenium, Beautiful Soup), ";
+fullLog = fullLog + "produced UML documentation (used: Visual Paradigm) and helped provide alternative solutions.\n";
+fullLog = fullLog + "She also had professionnal experience as an intern as a Backend Developer for Desjardins from September 2021 to December 2021.";
+fullLog = fullLog + "In that internship, she produced IMAC (Inventory Move, Add & Change) delta reports of ATM data with Java (Tomcat, Eclipse), created JUnit tests";
+fullLog = fullLog + "and used Scrum methodology, Agile development\n"
+fullLog = fullLog + "Her side projects include The Gentleman Project (2022), a Lightweight web-based projectional editor in which she implemented the Drag and Drop features.";
+fullLog = fullLog + "She also made a replica of UNIQLO Wakeup, an Alarm clock application that visually and acoustically displays time and weather that Uses Android Studio Emulator, JavaScript, React Native, Redux, NodeJS.";
+fullLog = fullLog + "During her academic studies, she made an advanced Flappy Bird with (Java GUI, OOP), Snake the game, Minesweeper, Sudoku solver with (HTML, JavaScript, jQuery, CSS).\n";
+fullLog = fullLog + "On her personal website (teatae.github.io), she implemented an AI assistant";
+fullLog = fullLog + "to help users on her website know more about her work.\n";
+fullLog = fullLog + "That AI loves otters, it replies with hard known facts about Tae or fun facts to the users.\n";
+fullLog = fullLog + "That AI dodges questions about her age, her pets, her family or about any of her education preceding university in a cute manner.\n";
+fullLog = fullLog + "The following is a conversation between that cute AI assistant and a user on her website.\n User:";
+
+function appendMessage(message, sender) {
+    console.log(fullLog);
+    const div = document.createElement('div');
+    if (sender == "user") {
+        div.classList.add('message', 'typed-static-1', sender);
+    } else {
+        div.classList.add('message', 'typed-static-1', sender, 'purple');
+        var teste = document.getElementById('input-message');
+        teste.focus();
+    }
+    div.innerHTML = message;
+    chatlog.appendChild(div);
+    chatlog.scrollTop = chatlog.scrollHeight;
+    if (chatlog.childElementCount > 2) {
+        chatlog.removeChild(chatlog.firstElementChild);
+    }
+}
+
+const fetchGPT = async (input) => {
+    fullLog = fullLog + input + "\n AI:";
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${ai}`
+    },
+    body: JSON.stringify({
+          prompt: fullLog,
+          temperature: 0.9,
+          max_tokens: 100,
+          top_p: 1,
+          frequency_penalty: 0,
+          presence_penalty: 0.7,
+          n: 1,
+          stop: [" User:", " AI:"]
+        })
+    };
+
+    console.log(requestOptions.body);
+    const response = await fetch(apiUrl, requestOptions);
+    const data = await response.json(); //extract JSON from the http response
+    console.log(data);
+    if (response.ok) {
+        const reply = data.choices[0].text.trim();
+        fullLog = fullLog + reply + "\n User:"
+        appendMessage(reply, 'bot');
+        
+    }
+};
+
+function onSendClick(ele) {
+    if(event.key === 'Enter') {
+        const input = ele.value.trim();
+        if (input) {
+            appendMessage(input, 'user');
+            fetchGPT(input);
+            ele.value = '';
+        }
+        location.href="#chat";
+    }
+}
+
+function fetchReplyGPT(ele) {
+    const input = ele.value.trim();
+    if (input) {
+        appendMessage(input, 'user');
+        fetchGPT(input);
+        ele.value = '';
+    }
+    location.href="#chat";
+}
+
+
 window.onload = function() {
     var elements = document.getElementsByClassName('typewrite');
     var el = document.getElementById('typed-main');
@@ -185,8 +280,8 @@ window.onload = function() {
         }        
     }
 
-    var elements = document.getElementsByClassName('typewrite1');
-    var el = document.getElementById('typed-main1');
+    elements = document.getElementsByClassName('typewrite1');
+    el = document.getElementById('typed-main1');
     if (el) {
         for (var i=0; i<elements.length; i++) {
             var toRotate = elements[i].getAttribute('data-type');
@@ -197,8 +292,8 @@ window.onload = function() {
         }        
     }
 
-    var elements = document.getElementsByClassName('typewrite2');
-    var el = document.getElementById('typed-main2');
+    elements = document.getElementsByClassName('typewrite2');
+    el = document.getElementById('typed-main2');
     if (el) {
         for (var i=0; i<elements.length; i++) {
             var toRotate = elements[i].getAttribute('data-type');
@@ -209,8 +304,20 @@ window.onload = function() {
         }        
     }
 
-    var elements = document.getElementsByClassName('typewrite3');
-    var el = document.getElementById('typed-main3');
+    elements = document.getElementsByClassName('typewrite3');
+    el = document.getElementById('typed-main3');
+    if (el) {
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new txtTypeHome(el, JSON.parse(toRotate), period);
+            }
+        }        
+    }
+
+    elements = document.getElementsByClassName('typewrite4');
+    el = document.getElementById('typed-main4');
     if (el) {
         for (var i=0; i<elements.length; i++) {
             var toRotate = elements[i].getAttribute('data-type');
@@ -252,4 +359,7 @@ window.onload = function() {
     resume1.alt = days;
     resume2.alt = days;
     resume3.alt = days;
+
+    const chatlog = document.getElementById('chatlog');
+    const inputBox = document.getElementById('input-message');
 };

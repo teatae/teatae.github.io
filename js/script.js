@@ -201,8 +201,8 @@ function appendMessage(message, sender) {
         div.classList.add('message', 'typed-static-1', sender);
     } else {
         div.classList.add('message', 'typed-static-1', sender, 'purple');
-        var teste = document.getElementById('input-message');
-        teste.focus();
+        location.href="#chat";
+        document.getElementById('input-message').focus();
     }
     div.innerHTML = message;
     chatlog.appendChild(div);
@@ -240,7 +240,6 @@ const fetchGPT = async (input) => {
         const reply = data.choices[0].text.trim();
         fullLog = fullLog + reply + "\n User:"
         appendMessage(reply, 'bot');
-        
     }
 };
 
@@ -252,7 +251,6 @@ function onSendClick(ele) {
             fetchGPT(input);
             ele.value = '';
         }
-        location.href="#chat";
     }
 }
 
@@ -263,7 +261,6 @@ function fetchReplyGPT(ele) {
         fetchGPT(input);
         ele.value = '';
     }
-    location.href="#chat";
 }
 
 
@@ -361,5 +358,4 @@ window.onload = function() {
     resume3.alt = days;
 
     const chatlog = document.getElementById('chatlog');
-    const inputBox = document.getElementById('input-message');
 };

@@ -117,6 +117,10 @@ header {
   text-transform: uppercase;
 }
 
+#input-message {
+  width: 88%;
+}
+
 .change-font {
   font-family: 'Waiting for the Sunrise', cursive; 
 }

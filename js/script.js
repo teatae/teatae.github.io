@@ -195,7 +195,6 @@ fullLog = fullLog + "That AI dodges questions about her age, her pets, her famil
 fullLog = fullLog + "The following is a conversation between that cute AI assistant and a user on her website.\n User:";
 
 function appendMessage(message, sender) {
-    console.log(fullLog);
     const div = document.createElement('div');
     if (sender == "user") {
         div.classList.add('message', 'typed-static-1', sender);
@@ -232,10 +231,8 @@ const fetchGPT = async (input) => {
         })
     };
 
-    console.log(requestOptions.body);
     const response = await fetch(apiUrl, requestOptions);
     const data = await response.json(); //extract JSON from the http response
-    console.log(data);
     if (response.ok) {
         const reply = data.choices[0].text.trim();
         fullLog = fullLog + reply + "\n User:"

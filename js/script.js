@@ -198,10 +198,8 @@ function appendMessage(message, sender) {
     const div = document.createElement('div');
     if (sender == "user") {
         div.classList.add('message', 'typed-static-1', sender);
-        location.href="#chat";
     } else {
         div.classList.add('message', 'typed-static-1', sender, 'purple');
-        location.href="#chat";
         document.getElementById('input-message').focus();
     }
     div.innerHTML = message;
@@ -243,6 +241,7 @@ const fetchGPT = async (input) => {
 
 function onSendClick(ele) {
     if(event.key === 'Enter') {
+        location.href="#chat";
         const input = ele.value.trim();
         if (input) {
             appendMessage(input, 'user');
@@ -254,6 +253,7 @@ function onSendClick(ele) {
 
 function fetchReplyGPT(ele) {
     const input = ele.value.trim();
+    location.href="#chat";
     if (input) {
         appendMessage(input, 'user');
         fetchGPT(input);

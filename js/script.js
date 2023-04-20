@@ -153,14 +153,24 @@ const fetchWeather = async (city, force) => {
 
 function search(ele) {
     if(event.key === 'Enter') {
-        fetchWeather(ele.value, true);
         location.href="#weather";
+        const input = ele.value.trim();
+        if (input) {
+            fetchWeather(ele.value, true);
+            document.getElementById('city').focus()
+            ele.value = '';
+        }
     }
 }
 
 function fetchMobileWeather(ele) {
-    fetchWeather(ele.value, false);
     location.href="#weather";
+    const input = ele.value.trim();
+    if (input) {
+        fetchWeather(input, false);
+        document.getElementById('city').focus()
+        ele.value = '';
+    }
 }
 
 const ai = String(window.dcrypt(x, "7c64223a676a5d597c3d583d697d664b75384a777f3b675b3c4d636d6449457f566e36426b37373c376e5964415a634965467b"));

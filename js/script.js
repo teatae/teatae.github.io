@@ -207,6 +207,7 @@ function appendMessage(message, sender) {
     chatlog.scrollTop = chatlog.scrollHeight;
     if (chatlog.childElementCount > 2) {
         chatlog.removeChild(chatlog.firstElementChild);
+        location.href="#chat";
     }
 }
 
@@ -253,7 +254,6 @@ function onSendClick(ele) {
 
 function fetchReplyGPT(ele) {
     const input = ele.value.trim();
-    location.href="#chat";
     if (input) {
         appendMessage(input, 'user');
         fetchGPT(input);

@@ -211,7 +211,6 @@ function appendMessage(message, sender) {
     chatlog.scrollTop = chatlog.scrollHeight;
     if (chatlog.childElementCount > 2) {
         chatlog.removeChild(chatlog.firstElementChild);
-        location.href="#chat";
     }
 }
 
@@ -241,6 +240,7 @@ const fetchGPT = async (input) => {
         const reply = data.choices[0].text.trim();
         fullLog = fullLog + reply + "\n User:"
         appendMessage(reply, 'bot');
+        location.href="#chat";
         document.getElementById('input-message').focus();
     }
 };
@@ -258,6 +258,7 @@ function onSendClick(ele) {
 }
 
 function fetchReplyGPT(ele) {
+    location.href="#chat";
     const input = ele.value.trim();
     if (input) {
         appendMessage(input, 'user');

@@ -198,6 +198,7 @@ function appendMessage(message, sender) {
     const div = document.createElement('div');
     if (sender == "user") {
         div.classList.add('message', 'typed-static-1', sender);
+        location.href="#chat";
     } else {
         div.classList.add('message', 'typed-static-1', sender, 'purple');
         location.href="#chat";

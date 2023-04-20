@@ -172,7 +172,12 @@ fullLog = fullLog + "Tae-Suzanne is to be refered as Tae or Suzanne.\n";
 fullLog = fullLog + "Tae has a Bachelor's Degree in Computer Science from Université de Montréal. She graduated in 2022.\n";
 fullLog = fullLog + "Tae currently lives in Montréal. Today is "+ currDay + ".\n";
 fullLog = fullLog + "Her email is tae@taetae.ca. Her phone number is (438)765-4320. Her LinkedIn is linkedin.com/in/taesuzanne.\n";
-fullLog = fullLog + "Her contact page is the third icon of her website.\n";
+fullLog = fullLog + "Her home page is the first icon (house icon) of her website.\n";
+fullLog = fullLog + "Her resume page is the second icon (card icon) of her website.\n";
+fullLog = fullLog + "Her contact page is the third icon (chat bubble icon) of her website.\n";
+fullLog = fullLog + "Her AI assistant page is the fourth icon (otter icon) of her website.\n";
+fullLog = fullLog + "Her weather page is the fifth icon (cloud icon) of her website.\n";
+fullLog = fullLog + "Her thank you page is the sixth and last icon (coding icon) of her website.\n";
 fullLog = fullLog + "Her GitHub is teatae.\n";
 fullLog = fullLog + "Programming languages that she knows are Python, Julia, HTML, CSS, JavaScript, Java, PHP, VBS, VBA (Excel), SQL (MySQL, DB2) and VHDL.\n";
 fullLog = fullLog + "She is familiar with these operating systems (Windows,Ubuntu) and these IDE (VSCode, Jupyter Notebook, Intellij Idea, Eclipse, Android Studio).\n";
@@ -188,7 +193,7 @@ fullLog = fullLog + "and used Scrum methodology, Agile development\n"
 fullLog = fullLog + "Her side projects include The Gentleman Project (2022), a Lightweight web-based projectional editor in which she implemented the Drag and Drop features.";
 fullLog = fullLog + "She also made a replica of UNIQLO Wakeup, an Alarm clock application that visually and acoustically displays time and weather that Uses Android Studio Emulator, JavaScript, React Native, Redux, NodeJS.";
 fullLog = fullLog + "During her academic studies, she made an advanced Flappy Bird with (Java GUI, OOP), Snake the game, Minesweeper, Sudoku solver with (HTML, JavaScript, jQuery, CSS).\n";
-fullLog = fullLog + "On her personal website (teatae.github.io), she implemented an AI assistant";
+fullLog = fullLog + "On fourth icon of her personal website navigation bar (teatae.github.io), she implemented a page for an AI assistant";
 fullLog = fullLog + "to help users on her website know more about her work.\n";
 fullLog = fullLog + "That AI loves otters, it replies with hard known facts about Tae or fun facts to the users.\n";
 fullLog = fullLog + "That AI avoids questions about her age, her pets, her family, her siblings or about any of her education preceding university in a cute manner.\n";
@@ -200,7 +205,6 @@ function appendMessage(message, sender) {
         div.classList.add('message', 'typed-static-1', sender);
     } else {
         div.classList.add('message', 'typed-static-1', sender, 'purple');
-        document.getElementById('input-message').focus();
     }
     div.innerHTML = message;
     chatlog.appendChild(div);
@@ -237,6 +241,7 @@ const fetchGPT = async (input) => {
         const reply = data.choices[0].text.trim();
         fullLog = fullLog + reply + "\n User:"
         appendMessage(reply, 'bot');
+        document.getElementById('input-message').focus();
     }
 };
 

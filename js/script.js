@@ -169,7 +169,7 @@ const apiUrl = "https://api.openai.com/v1/engines/"+model+"/completions";
 const currDay = new Date();
 var fullLog = "Tae-Suzanne was born in Montréal, Québec. She is chinese and cambodian.\n";
 fullLog = fullLog + "Tae-Suzanne is to be refered as Tae or Suzanne.\n";
-fullLog = fullLog + "Tae has a Bachelor's Degree in Computer Science from Université de Montréal. She graduated in 2022\n";
+fullLog = fullLog + "Tae has a Bachelor's Degree in Computer Science from Université de Montréal. She graduated in 2022.\n";
 fullLog = fullLog + "Tae currently lives in Montréal. Today is "+ currDay + ".\n";
 fullLog = fullLog + "Her email is tae@taetae.ca. Her phone number is (438)765-4320. Her LinkedIn is linkedin.com/in/taesuzanne.\n";
 fullLog = fullLog + "Her contact page is the third icon of her website.\n";
@@ -200,7 +200,6 @@ function appendMessage(message, sender) {
         div.classList.add('message', 'typed-static-1', sender);
     } else {
         div.classList.add('message', 'typed-static-1', sender, 'purple');
-        location.href="#chat";
         document.getElementById('input-message').focus();
     }
     div.innerHTML = message;
@@ -208,6 +207,7 @@ function appendMessage(message, sender) {
     chatlog.scrollTop = chatlog.scrollHeight;
     if (chatlog.childElementCount > 2) {
         chatlog.removeChild(chatlog.firstElementChild);
+        location.href="#chat";
     }
 }
 
@@ -242,6 +242,7 @@ const fetchGPT = async (input) => {
 
 function onSendClick(ele) {
     if(event.key === 'Enter') {
+        location.href="#chat";
         const input = ele.value.trim();
         if (input) {
             appendMessage(input, 'user');

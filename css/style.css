@@ -117,6 +117,11 @@ header {
   text-transform: uppercase;
 }
 
+.typed-static-3 {
+  display: inline-block;
+  text-align: center;
+}
+
 #input-message {
   width: 88%;
 }

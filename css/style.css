@@ -91,6 +91,11 @@ header {
   color: #f1f1f1;
 }
 
+#avatar {
+  border-radius: 50%;
+  box-shadow: 0 -5px 3px -3px black, 0 5px 3px -3px black;
+}
+
 #name {
   text-transform: uppercase;
 }

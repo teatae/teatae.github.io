@@ -1,29 +1,29 @@
 * {
-  color:#fff;
-  text-decoration: none;
-  background-color: #212121;
-  font-family: 'VT323', monospace;
-  margin: 0;
+    color: #fff;
+    text-decoration: none;
+    background-color: #212121;
+    font-family: "VT323", monospace;
+    margin: 0;
 }
 
 .red {
-  color: red;
+    color: red;
 }
 
 .purple {
-  color: #9a99ff;
+    color: #9a99ff;
 }
 
 .blue {
-  color: #2FCBEF;
+    color: #2fcbef;
 }
 
 .yellow {
-  color: #e6db74;
+    color: #e6db74;
 }
 
 .grey {
-  color:#808080;
+    color: #808080;
 }
 
 .seperator {
@@ -47,148 +47,165 @@ html, body {
 }
 
 #page {
-  overflow: hidden;
-  display: grid;
-  grid-template-areas:
-    "head  head"
-    "nav   main";
-  grid-template-columns: 22px 1fr;
+    overflow: hidden;
+    display: grid;
+    grid-template-areas:
+        "head  head"
+        "nav   main";
+    grid-template-columns: 22px 1fr;
 }
 
 #page > header {
-  grid-area: head;
+    grid-area: head;
 }
 
 #page > .linenumbers {
-  grid-area: nav;
-  position: fixed;
-  padding-top: 2em;
+    grid-area: nav;
+    position: fixed;
+    padding-top: 2em;
 }
 
 #page > .main {
-  grid-area: main;
-  padding: 0 14px;
+    grid-area: main;
+    padding: 0 14px;
 }
 
 h1 {
-  font-weight: 100;
-  background: #323b41;
+    font-weight: 100;
+    background: #323b41;
 }
 
 header {
-  position: sticky;
-  top: 0;
-  z-index:100;
-  margin: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin: 0;
 }
 
 .linenumbers span {
-  color: #818181;
-  display: block;
+    color: #818181;
+    display: block;
 }
 
 .linenumbers span:hover {
-  color: #f1f1f1;
+    color: #f1f1f1;
 }
 
 #avatar {
-  border-radius: 50%;
-  box-shadow: 0 -5px 3px -3px black, 0 5px 3px -3px black;
+    border-radius: 50%;
+    box-shadow: 0 -5px 3px -3px black, 0 5px 3px -3px black;
 }
 
 #name {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .typewriter {
-  text-align: center;
+    text-align: center;
 }
 
 .typewriter span {
-  /* font-family: 'Waiting for the Sunrise', cursive; */
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .1em; /* Adjust as needed */
-  display: inline;
+    /* font-family: 'Waiting for the Sunrise', cursive; */
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: 0.1em; /* Adjust as needed */
+    display: inline;
 }
 
 .typed-static-1 {
-  display: block;
+    display: block;
 }
 
 .typed-static-2 {
-  display: inline-block;
-  text-align: center;
-  text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .typed-static-3 {
-  display: inline-block;
-  text-align: center;
+    display: inline-block;
+    text-align: center;
 }
 
 #input-message {
-  width: 88%;
+    width: 88%;
 }
 
 .change-font {
-  font-family: 'Waiting for the Sunrise', cursive; 
+    font-family: "Waiting for the Sunrise", cursive;
 }
 
 #typed-main, #typed-main1, #typed-main2, #typed-main3 {
-  text-transform: lowercase;
+    text-transform: lowercase;
 }
 
 .caret {
-  color: orange;
-  animation: blink-caret .5s step-end infinite;
+    color: orange;
+    animation: blink-caret 0.5s step-end infinite;
 }
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to { color: transparent }
-  50% { color: orange }
+    from,
+    to {
+        color: transparent;
+    }
+    50% {
+        color: orange;
+    }
 }
 
 .fa {
-  text-align: center;
-  text-decoration: none;
-  border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
 }
 
 .fa:hover {
-  transition-duration: 0.5s;
-  opacity: 0.7;
+    transition-duration: 0.5s;
+    opacity: 0.7;
 }
 
 .fa-id-card, .fa-facebook, .fa-comment, .fa-home, .fa-cloud, .fa-code, .fa-otter {
-  color: white;
+    color: white;
 }
 
-.hidden { display:none; }
+.hidden {
+    display: none;
+}
 
 body, h1, .typed-static-1, #typedtext, .linenumbers span, .old {
-  font-size: 24px;
+    font-size: 24px;
 }
 
 .typewriter {
-  font-size: 26px;
+    font-size: 26px;
 }
 
 @media only screen and (min-device-width: 480px) {
-  body, h1, .typed-static-1, #typedtext, .linenumbers span, .old {
-    font-size: 24px;
-  }
-  .typewriter {
-    font-size: 26px;
-  }
+    body,
+    h1,
+    .typed-static-1,
+    #typedtext,
+    .linenumbers span,
+    .old {
+        font-size: 24px;
+    }
+    .typewriter {
+        font-size: 26px;
+    }
 }
 
 @media only screen and (min-device-width: 768px) {
-  body, h1, .typed-static-1, #typedtext, .linenumbers span, .old {
-    font-size: 28px
-  }
-  .typewriter {
-    font-size: 38px;
-  }
+    body,
+    h1,
+    .typed-static-1,
+    #typedtext,
+    .linenumbers span,
+    .old {
+        font-size: 28px;
+    }
+    .typewriter {
+        font-size: 38px;
+    }
 }

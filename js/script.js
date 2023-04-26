@@ -1,29 +1,24 @@
 const crypt = (salt, text) => {
-  const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
-  const byteHex = (n) => ("0" + Number(n).toString(16)).substr(-2);
-  const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
+    const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
+    const byteHex = (n) => ("0" + Number(n).toString(16)).substr(-2);
+    const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
 
-  return text
-    .split("")
-    .map(textToChars)
-    .map(applySaltToChar)
-    .map(byteHex)
-    .join("");
+    return text.split("").map(textToChars).map(applySaltToChar).map(byteHex).join("");
 };
 
 const dcrypt = window.dcrypt;
 
-var txtTypeHome = function(el, toRotate, period) {
+var txtTypeHome = function (el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
     this.loopNum = 0;
     this.period = parseInt(period, 10) || 2000;
-    this.txt = '';
+    this.txt = "";
     this.tick();
     this.isDeleting = false;
 };
 
-txtTypeHome.prototype.tick = function() {
+txtTypeHome.prototype.tick = function () {
     var i = this.loopNum % this.toRotate.length;
     var fullTxt = this.toRotate[i];
 
@@ -38,18 +33,20 @@ txtTypeHome.prototype.tick = function() {
     var that = this;
     var delta = 200 - Math.random() * 100;
 
-    if (this.isDeleting) { delta /= 2; }
+    if (this.isDeleting) {
+        delta /= 2;
+    }
 
     if (!this.isDeleting && this.txt === fullTxt) {
         delta = this.period;
         this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
+    } else if (this.isDeleting && this.txt === "") {
         this.isDeleting = false;
         this.loopNum++;
         delta = 500;
     }
 
-    setTimeout(function() {
+    setTimeout(function () {
         that.tick();
     }, delta);
 };
@@ -90,24 +87,24 @@ var txtTypeAbout = function() {
 */
 
 function startTime() {
-    document.getElementById('clock').innerHTML = (new Date().toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }));
+    document.getElementById("clock").innerHTML = new Date().toLocaleString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true });
     setTimeout(startTime, 1000);
 }
 
 const fetchWeatherLambda = async (cityVal) => {
     const params = {
-        FunctionName: 'taeLambdaWeather',
-        Payload: JSON.stringify({ city: cityVal })
+        FunctionName: "taeLambdaWeather",
+        Payload: JSON.stringify({ city: cityVal }),
     };
 
     const result = await window.lambda.invoke(params).promise();
     const responsePayload = JSON.parse(result.Payload);
     return responsePayload;
-}
+};
 
-const x = 'lmao';
+const x = "lmao";
 const fetchWeather = async (city, force) => {
-    if (city !== undefined && city !== null && city !=="" && (force || (document.getElementById('name').innerHTML.toLowerCase() !== city.toLowerCase()))) {
+    if (city !== undefined && city !== null && city !== "" && (force || document.getElementById("name").innerHTML.toLowerCase() !== city.toLowerCase())) {
         const unit = "metric";
         const request_url = "https://api.openweathermap.org/data/2.5/weather?appid=" + dcrypt(x, "38366e3f696e3e36386c3c386e3a3c6e3d3e383b693c3d696e366d3a366c3b36") + "&q=" + city + "&units=" + unit + "&mode=json";
         const response = await fetch(request_url);
@@ -117,70 +114,89 @@ const fetchWeather = async (city, force) => {
         console.log(myJson);
         if (response.ok) {
             var imageData = "";
-            var weatherId = myJson.weather[0].id+"";
-                switch (weatherId.charAt(0)) {
-                    case '2': imageData = "stormy"; break;
-                    case '3': imageData = "rainy"; break;
-                    case '5': imageData = "rainy"; break;
-                    case '6': imageData = "snowy"; break;
-                    case '7': imageData = "foggy"; break;
-                    case '8':
+            var weatherId = myJson.weather[0].id + "";
+            switch (weatherId.charAt(0)) {
+                case "2":
+                    imageData = "stormy";
+                    break;
+                case "3":
+                    imageData = "rainy";
+                    break;
+                case "5":
+                    imageData = "rainy";
+                    break;
+                case "6":
+                    imageData = "snowy";
+                    break;
+                case "7":
+                    imageData = "foggy";
+                    break;
+                case "8":
                     switch (weatherId.charAt(2)) {
-                    case '0': imageData = "sunny"; break;
-                    case '1': imageData = "partlycloudy"; break;
-                    default: imageData = "cloudy"; break;
-                } break;
-                default: imageData = "unknown"; break;
+                        case "0":
+                            imageData = "sunny";
+                            break;
+                        case "1":
+                            imageData = "partlycloudy";
+                            break;
+                        default:
+                            imageData = "cloudy";
+                            break;
+                    }
+                    break;
+                default:
+                    imageData = "unknown";
+                    break;
             }
-            document.getElementById('name').innerHTML = myJson.name;
-            document.getElementById('weatherImg').src = "assets/"+imageData+".png";
+            document.getElementById("name").innerHTML = myJson.name;
+            document.getElementById("weatherImg").src = "assets/" + imageData + ".png";
             if (imageData == "partlycloudy") {
-                document.getElementById('description').innerHTML = "partly cloudy";
+                document.getElementById("description").innerHTML = "partly cloudy";
             } else {
-                document.getElementById('description').innerHTML = imageData;
+                document.getElementById("description").innerHTML = imageData;
             }
-            document.getElementById('temp').innerHTML = myJson.main.temp+" °C";
-            document.getElementById('feelsLike').innerHTML = myJson.main.feels_like+" °C";
+            document.getElementById("temp").innerHTML = myJson.main.temp + " °C";
+            document.getElementById("feelsLike").innerHTML = myJson.main.feels_like + " °C";
         } else {
-            document.getElementById('name').innerHTML = "City is not recognized";
-            document.getElementById('weatherImg').src = "assets/unknown.png";
-            document.getElementById('description').innerHTML = "Try again";
-            document.getElementById('temp').innerHTML = "";
-            document.getElementById('feelsLike').innerHTML = "";
+            document.getElementById("name").innerHTML = "City is not recognized";
+            document.getElementById("weatherImg").src = "assets/unknown.png";
+            document.getElementById("description").innerHTML = "Try again";
+            document.getElementById("temp").innerHTML = "";
+            document.getElementById("feelsLike").innerHTML = "";
         }
     }
-}
+};
 
 function search(ele) {
-    if(event.key === 'Enter') {
-        location.href="#weather";
+    if (event.key === "Enter") {
+        location.href = "#weather";
         const input = ele.value.trim();
         if (input) {
             fetchWeather(ele.value, true);
-            document.getElementById('city').focus()
-            ele.value = '';
+            document.getElementById("city").focus();
+            ele.value = "";
         }
     }
 }
 
 function fetchMobileWeather(ele) {
-    location.href="#weather";
+    location.href = "#weather";
     const input = ele.value.trim();
     if (input) {
         fetchWeather(input, false);
-        document.getElementById('city').focus()
-        ele.value = '';
+        document.getElementById("city").focus();
+        ele.value = "";
     }
 }
 
 const ai = String(window.dcrypt(x, "7c64223a676a5d597c3d583d697d664b75384a777f3b675b3c4d636d6449457f566e36426b37373c376e5964415a634965467b"));
-const model = 'text-davinci-003';
-const apiUrl = "https://api.openai.com/v1/engines/"+model+"/completions";
+const model = "text-davinci-003";
+const apiUrl = "https://api.openai.com/v1/engines/" + model + "/completions";
 const currDay = new Date();
 var fullLog = "Tae-Suzanne was born in Montréal, Québec. She is chinese and cambodian.\n";
 fullLog = fullLog + "Tae-Suzanne is to be refered as Tae or Suzanne.\n";
 fullLog = fullLog + "Tae has a Bachelor's Degree in Computer Science from Université de Montréal. She graduated in 2022.\n";
-fullLog = fullLog + "Tae currently lives in Montréal. Today is "+ currDay + ".\n";
+fullLog = fullLog + "Tae currently lives in Montréal. Today is " + currDay + ".\n";
 fullLog = fullLog + "Her email is tae@taetae.ca. Her phone number is (438)765-4320. Her LinkedIn is linkedin.com/in/taesuzanne.\n";
 fullLog = fullLog + "Her home page is the first icon (house icon) of her website.\n";
 fullLog = fullLog + "Her resume page is the second icon (card icon) of her website.\n";
@@ -199,9 +215,10 @@ fullLog = fullLog + "an Invoice reporter (used: VBS, VBA, Python, DB2, ETL), som
 fullLog = fullLog + "produced UML documentation (used: Visual Paradigm) and helped provide alternative solutions.\n";
 fullLog = fullLog + "She also had professionnal experience as an intern as a Backend Developer for Desjardins from September 2021 to December 2021.";
 fullLog = fullLog + "In that internship, she produced IMAC (Inventory Move, Add & Change) delta reports of ATM data with Java (Tomcat, Eclipse), created JUnit tests";
-fullLog = fullLog + "and used Scrum methodology, Agile development\n"
+fullLog = fullLog + "and used Scrum methodology, Agile development\n";
 fullLog = fullLog + "Her side projects include The Gentleman Project (2022), a Lightweight web-based projectional editor in which she implemented the Drag and Drop features.";
-fullLog = fullLog + "She also made a replica of UNIQLO Wakeup, an Alarm clock application that visually and acoustically displays time and weather that Uses Android Studio Emulator, JavaScript, React Native, Redux, NodeJS.";
+fullLog = fullLog + "She also made a replica of UNIQLO Wakeup,";
+fullLog = fullLog + "an Alarm clock application that visually and acoustically displays time and weather that Uses Android Studio Emulator, JavaScript, React Native, Redux, NodeJS.";
 fullLog = fullLog + "During her academic studies, she made an advanced Flappy Bird with (Java GUI, OOP), Snake the game, Minesweeper, Sudoku solver with (HTML, JavaScript, jQuery, CSS).\n";
 fullLog = fullLog + "On fourth icon of her personal website navigation bar (teatae.github.io), she implemented a page for an AI assistant";
 fullLog = fullLog + "to help users on her website know more about her work.\n";
@@ -210,11 +227,11 @@ fullLog = fullLog + "That AI avoids questions about her age, her pets, her famil
 fullLog = fullLog + "The following is a conversation between that cute and quirky AI assistant and a user on her website.\n User:";
 
 function appendMessage(message, sender) {
-    const div = document.createElement('div');
+    const div = document.createElement("div");
     if (sender == "user") {
-        div.classList.add('message', 'typed-static-1', sender);
+        div.classList.add("message", "typed-static-1", sender);
     } else {
-        div.classList.add('message', 'typed-static-1', sender, 'purple');
+        div.classList.add("message", "typed-static-1", sender, "purple");
     }
     div.innerHTML = message;
     chatlog.appendChild(div);
@@ -227,132 +244,136 @@ function appendMessage(message, sender) {
 const fetchGPT = async (input) => {
     fullLog = fullLog + input + "\n AI:";
     const requestOptions = {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${ai}`
-    },
-    body: JSON.stringify({
-          prompt: fullLog,
-          temperature: 0.9,
-          max_tokens: 100,
-          top_p: 1,
-          frequency_penalty: 0,
-          presence_penalty: 0.7,
-          n: 1,
-          stop: [" User:", " AI:"]
-        })
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${ai}`,
+        },
+        body: JSON.stringify({
+            prompt: fullLog,
+            temperature: 0.9,
+            max_tokens: 100,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0.7,
+            n: 1,
+            stop: [" User:", " AI:"],
+        }),
     };
 
     const response = await fetch(apiUrl, requestOptions);
     const data = await response.json(); //extract JSON from the http response
     if (response.ok) {
         const reply = data.choices[0].text.trim();
-        fullLog = fullLog + reply + "\n User:"
-        appendMessage(reply, 'bot');
-        location.href="#chat";
-        document.getElementById('input-message').focus();
+        fullLog = fullLog + reply + "\n User:";
+        appendMessage(reply, "bot");
+        location.href = "#chat";
+        document.getElementById("input-message").focus();
     }
 };
 
 function onSendClick(ele) {
-    if(event.key === 'Enter') {
-        location.href="#chat";
+    if (event.key === "Enter") {
+        location.href = "#chat";
         const input = ele.value.trim();
         if (input) {
-            appendMessage(input, 'user');
+            appendMessage(input, "user");
             fetchGPT(input);
-            ele.value = '';
+            ele.value = "";
         }
     }
 }
 
 function fetchReplyGPT(ele) {
-    location.href="#chat";
+    location.href = "#chat";
     const input = ele.value.trim();
     if (input) {
-        appendMessage(input, 'user');
+        appendMessage(input, "user");
         fetchGPT(input);
-        ele.value = '';
+        ele.value = "";
     }
 }
 
-
-window.onload = function() {
-    var elements = document.getElementsByClassName('typewrite');
-    var el = document.getElementById('typed-main');
+window.onload = function () {
+    var elements = document.getElementsByClassName("typewrite");
+    var el = document.getElementById("typed-main");
     if (el) {
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute("data-type");
+            var period = elements[i].getAttribute("data-period");
             if (toRotate) {
-              new txtTypeHome(el, JSON.parse(toRotate), period);
+                new txtTypeHome(el, JSON.parse(toRotate), period);
             }
-        }        
+        }
     }
 
-    elements = document.getElementsByClassName('typewrite1');
-    el = document.getElementById('typed-main1');
+    elements = document.getElementsByClassName("typewrite1");
+    el = document.getElementById("typed-main1");
     if (el) {
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute("data-type");
+            var period = elements[i].getAttribute("data-period");
             if (toRotate) {
-              new txtTypeHome(el, JSON.parse(toRotate), period);
+                new txtTypeHome(el, JSON.parse(toRotate), period);
             }
-        }        
+        }
     }
 
-    elements = document.getElementsByClassName('typewrite2');
-    el = document.getElementById('typed-main2');
+    elements = document.getElementsByClassName("typewrite2");
+    el = document.getElementById("typed-main2");
     if (el) {
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute("data-type");
+            var period = elements[i].getAttribute("data-period");
             if (toRotate) {
-              new txtTypeHome(el, JSON.parse(toRotate), period);
+                new txtTypeHome(el, JSON.parse(toRotate), period);
             }
-        }        
+        }
     }
 
-    elements = document.getElementsByClassName('typewrite3');
-    el = document.getElementById('typed-main3');
+    elements = document.getElementsByClassName("typewrite3");
+    el = document.getElementById("typed-main3");
     if (el) {
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute("data-type");
+            var period = elements[i].getAttribute("data-period");
             if (toRotate) {
-              new txtTypeHome(el, JSON.parse(toRotate), period);
+                new txtTypeHome(el, JSON.parse(toRotate), period);
             }
-        }        
+        }
     }
 
-    elements = document.getElementsByClassName('typewrite4');
-    el = document.getElementById('typed-main4');
+    elements = document.getElementsByClassName("typewrite4");
+    el = document.getElementById("typed-main4");
     if (el) {
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute("data-type");
+            var period = elements[i].getAttribute("data-period");
             if (toRotate) {
-              new txtTypeHome(el, JSON.parse(toRotate), period);
+                new txtTypeHome(el, JSON.parse(toRotate), period);
             }
-        }        
+        }
     }
-    
-    if (document.getElementById('typedtext')) { txtTypeAbout(); }
 
-    if (document.getElementById('clock')) { startTime(); }
+    if (document.getElementById("typedtext")) {
+        txtTypeAbout();
+    }
 
-    if (document.getElementById('weather')) { fetchWeather("montreal", true); }
+    if (document.getElementById("clock")) {
+        startTime();
+    }
 
-    
+    if (document.getElementById("weather")) {
+        fetchWeather("montreal", true);
+    }
+
     let date1 = new Date();
-    let date2 = new Date('04/03/2023');  // April 3 2023
+    let date2 = new Date("04/03/2023"); // April 3 2023
     const deltaDays = (date1, date2) => {
         let diffMs = date1.getTime() - date2.getTime();
         let diffDays = Math.floor(diffMs / (24 * 60 * 60 * 1000));
         return diffDays;
-    }
+    };
     var days = "";
     if (deltaDays(date1, date2) == 0) {
         days = "resume updated today";
@@ -362,8 +383,8 @@ window.onload = function() {
         days = "resume updated " + deltaDays(date1, date2) + " days ago";
     }
 
-    var resume1 = document.getElementById('resume1');
-    var resume2 = document.getElementById('resume2');
+    var resume1 = document.getElementById("resume1");
+    var resume2 = document.getElementById("resume2");
     resume1.title = days;
     resume2.title = days;
     resume3.title = days;
@@ -371,5 +392,5 @@ window.onload = function() {
     resume2.alt = days;
     resume3.alt = days;
 
-    const chatlog = document.getElementById('chatlog');
+    const chatlog = document.getElementById("chatlog");
 };

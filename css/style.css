@@ -139,7 +139,7 @@ header {
   text-transform: lowercase;
 }
 
-#typed-caret {
+.caret {
   color: orange;
   animation: blink-caret .5s step-end infinite;
 }

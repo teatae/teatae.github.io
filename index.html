@@ -5,36 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Tae's fun website with AI assistant and weather">
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-        <link async href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
-        <link async href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise&display=swap" rel="stylesheet">
-        <link async href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-        <link async href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link async href="css/style.css" rel="stylesheet">
+        <link async href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet" media="screen">
+        <link async href="https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise&display=swap" rel="stylesheet" media="screen">
+        <link async href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="screen">
+        <link async href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="screen">
+        <link async href="css/style.css" rel="stylesheet" media="screen">
         <link async href="https://avatars.githubusercontent.com/u/36865465?s=40&v=4" rel="icon">
         <title>Tae.js</title>
-        <script>
-            window.dcrypt = (salt, encoded) => {
-                const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
-                const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
-                return encoded
-                    .match(/.{1,2}/g)
-                    .map((hex) => parseInt(hex, 16))
-                    .map(applySaltToChar)
-                    .map((charCode) => String.fromCharCode(charCode))
-                    .join("");
-            };
-            /*function onSdkLoad() {
-                AWS.config.update({
-                    accessKeyId: "configuring",
-                    secretAccessKey: "configuring",
-                    region: "us-east-1",
-                });
-                const lambda = new AWS.Lambda();
-                window.lambda = lambda;
-            }*/
-        </script>
-        <!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.105.0.min.js" onload="onSdkLoad()"></script> -->
-        <script defer src="js/script.js"></script>
     </head>
     <body id="page">
         <div class="linenumbers">
@@ -328,5 +305,28 @@
                 <span><br></span>
             </div>
         </div>
+        <script>
+            window.dcrypt = (salt, encoded) => {
+                const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
+                const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
+                return encoded
+                    .match(/.{1,2}/g)
+                    .map((hex) => parseInt(hex, 16))
+                    .map(applySaltToChar)
+                    .map((charCode) => String.fromCharCode(charCode))
+                    .join("");
+            };
+            /*function onSdkLoad() {
+                AWS.config.update({
+                    accessKeyId: "configuring",
+                    secretAccessKey: "configuring",
+                    region: "us-east-1",
+                });
+                const lambda = new AWS.Lambda();
+                window.lambda = lambda;
+            }*/
+        </script>
+        <!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.105.0.min.js" onload="onSdkLoad()"></script> -->
+        <script defer src="js/script.js"></script>
     </body>
 </html>

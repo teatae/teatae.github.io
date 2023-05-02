@@ -368,7 +368,7 @@ window.onload = function () {
     }
 
     let date1 = new Date();
-    let date2 = new Date("04/03/2023"); // April 3 2023
+    let date2 = new Date("05/02/2023"); // April 3 2023
     const deltaDays = (date1, date2) => {
         let diffMs = date1.getTime() - date2.getTime();
         let diffDays = Math.floor(diffMs / (24 * 60 * 60 * 1000));

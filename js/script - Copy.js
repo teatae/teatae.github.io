@@ -302,7 +302,7 @@ function changeColor(event) {
 
 window.onload = function () {
     const navLinks = document.querySelectorAll('.nav');
-    navLinks[0].click();
+    navLinks[0].classList.add('clicked');
 
     var elements = document.getElementsByClassName("typewrite");
     var el = document.getElementById("typed-main");

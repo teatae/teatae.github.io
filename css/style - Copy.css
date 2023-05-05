@@ -168,6 +168,9 @@ header {
 .fa-id-card, .fa-facebook, .fa-comment, .fa-home, .fa-cloud, .fa-code, .fa-otter {
     color: white;
 }
+.nav.fa-id-card.clicked, .nav.fa-facebook.clicked, .nav.fa-comment.clicked, .nav.fa-home.clicked, .nav.fa-cloud.clicked, .nav.fa-code.clicked, .nav.fa-otter.clicked {
+    color: #2fcbef;
+}
 .hidden {
     display: none;
 }

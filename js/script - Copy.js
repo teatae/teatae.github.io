@@ -294,7 +294,16 @@ function fetchReplyGPT(ele) {
     }
 }
 
+function changeColor(event) {
+  const links = document.querySelectorAll('.nav');
+  links.forEach(link => link.classList.remove('clicked'));
+  event.target.classList.add('clicked');
+}
+
 window.onload = function () {
+    const navLinks = document.querySelectorAll('.nav');
+    navLinks[0].click();
+
     var elements = document.getElementsByClassName("typewrite");
     var el = document.getElementById("typed-main");
     if (el) {

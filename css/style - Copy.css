@@ -68,7 +68,6 @@ html, body {
     padding: 0;
 }
 #page {
-    overflow: hidden;
     display: grid;
     grid-template-areas:
         "head  head"

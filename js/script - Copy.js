@@ -242,6 +242,7 @@ function appendMessage(message, sender) {
 }
 
 const fetchGPT = async (input) => {
+    /*
     fullLog = fullLog + input + "\n AI:";
     const requestOptions = {
         method: "POST",
@@ -251,7 +252,7 @@ const fetchGPT = async (input) => {
         },
         body: JSON.stringify({
             prompt: fullLog,
-            temperature: 0.9,
+            temperature: 0.6,
             max_tokens: 100,
             top_p: 1,
             frequency_penalty: 0,
@@ -260,7 +261,6 @@ const fetchGPT = async (input) => {
             stop: [" User:", " AI:"],
         }),
     };
-
     const response = await fetch(apiUrl, requestOptions);
     const data = await response.json(); //extract JSON from the http response
     if (response.ok) {
@@ -270,6 +270,10 @@ const fetchGPT = async (input) => {
         location.href = "#chat";
         document.getElementById("input-message").focus();
     }
+    */
+    appendMessage("Oops! This section is under maintenance. The AI assistant API has reached the requests per minute limit.", "bot");
+    location.href = "#chat";
+    document.getElementById("input-message").focus();
 };
 
 function onSendClick(ele) {

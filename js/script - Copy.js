@@ -368,6 +368,18 @@ window.onload = function () {
         }
     }
 
+    elements = document.getElementsByClassName("typewrite5");
+    el = document.getElementById("typed-main5");
+    if (el) {
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute("data-type");
+            var period = elements[i].getAttribute("data-period");
+            if (toRotate) {
+                new txtTypeHome(el, JSON.parse(toRotate), period);
+            }
+        }
+    }
+
     if (document.getElementById("typedtext")) {
         txtTypeAbout();
     }

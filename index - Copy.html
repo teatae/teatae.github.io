@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Tae's fun website with AI assistant and weather">
+        <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+        <link async href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="screen">
+        <link async href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="screen">
+        <link async href="css/style.css" rel="stylesheet" media="screen">
+        <link async href="https://avatars.githubusercontent.com/u/36865465?s=40&v=4" rel="icon">
+        <title>Tae.js</title>
+    </head>
+    <body id="page">
+        <div class="linenumbers">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+            <span>18</span>
+            <span>19</span>
+            <span>20</span>
+            <span>21</span>
+            <span>22</span>
+            <span>23</span>
+            <span>24</span>
+            <span>25</span>
+            <span>26</span>
+            <span>27</span>
+            <span>28</span>
+            <span>29</span>
+            <span>30</span>
+            <span>31</span>
+            <span>32</span>
+            <span>33</span>
+            <span>34</span>
+            <span>35</span>
+            <span>36</span>
+            <span>37</span>
+            <span>38</span>
+            <span>39</span>
+            <span>40</span>
+            <span>41</span>
+            <span>42</span>
+            <span>43</span>
+            <span>44</span>
+            <span>45</span>
+            <span>46</span>
+            <span>47</span>
+            <span>48</span>
+            <span>49</span>
+            <span>50</span>
+            <span>51</span>
+            <span>52</span>
+            <span>53</span>
+            <span>54</span>
+            <span>55</span>
+            <span>56</span>
+            <span>57</span>
+            <span>58</span>
+            <span>59</span>
+            <span>60</span>
+            <span>61</span>
+            <span>62</span>
+            <span>63</span>
+            <span>64</span>
+            <span>65</span>
+            <span>66</span>
+            <span>67</span>
+            <span>68</span>
+            <span>69</span>
+        </div>
+        <header>
+            <h1>// tae_suzanne</h1>
+            <div>
+                <a href="#" class="fa fa-home nav" onclick="changeColor(event)" title="Home"></a>
+                <a href="#aboutme" class="fa fa-id-card nav" onclick="changeColor(event)" title="About"></a>
+                <a href="#contact" class="fa fa-comment nav" onclick="changeColor(event)" title="Contact"></a>
+                <a href="#chat" class="fa fa-otter nav" onclick="changeColor(event)" title="ChatGPT"></a>
+                <a href="#weather" class="fa fa-cloud nav" onclick="changeColor(event)" title="Weather"></a>
+                <a href="#projects" class="fa fa-code nav" onclick="changeColor(event)" title="Projects"></a>
+            </div>
+        </header>
+        <div class="main">
+            <!-- <span class="old hidden"> this website is currently <span id="days"></span> days old, </span><div>Who am <span class='red'>I</span> ?</div> -->
+            <!-- <div class="typewriter"><span id="typedtext" class="change-font"></span></div> -->
+            <div class="typewriter">
+                <br>
+                <br>
+                <img id="avatar" src="assets/tae.webp" width="180" height="180" alt="Avatar">
+                <br>
+                <span class="typewrite" data-period="2000" data-type='[ "Software Developer", "Web Designer", "Backend Developer", "Perpetual Student", "Creative Mind" ]'>
+                    <span class="typed-static-1">// HI, I'M <span class="purple">TAE-SUZANNE</span>, A... <br>
+                    </span>
+                    <span>{"</span>
+                    <span id="typed-main" class="yellow"></span>
+                    <span class="caret">|</span>
+                    <span>"}</span>
+                </span>
+                <div class="seperator"></div>
+                <a href="/aboutme" id="aboutme" title="About me">
+                    <br>
+                    <br>
+                </a>
+                <span class="typewrite1" data-period="8888" data-type='[ "Resume" ]'>
+                    <span>{"</span>
+                    <span id="typed-main1" class="blue"></span>
+                    <span class="caret">|</span>
+                    <span>"}</span>
+                    <span class="typed-static-1">
+                        <br>
+                        <a id="resume1" href="assets/CV-Tae-Suzanne-Ly%20EN.pdf" target="_blank" class="blue fa fa-file" title="resume"></a>
+                        <a id="resume2" href="assets/CV-Tae-Suzanne-Ly%20EN.pdf" target="_blank" class="yellow" title="resume">PDF</a>
+                    </span>
+                    <span>
+                        <br>
+                        <br>
+                        <span class="purple">Fuze</span>
+                    </span>
+                    <span class="typed-static-1">
+                        <br> &#60; <span class="grey">Jun 2021 - present </span>&#62; </span>
+                    <span class="typed-static-1">
+                        <br>
+                        <span class="yellow">Software Developer</span>
+                    </span>
+                    <span class="typed-static-1">
+                        <br>
+                        <span>- Build internal applications with alternative solutions</span>
+                    </span>
+                    <span class="typed-static-1">
+                        <br>
+                        <span>- Manage databases and automate tasks/reports</span>
+                    </span>
+                    <span>
+                        <br>
+                        <br>
+                        <span class="purple">Desjardins</span>
+                    </span>
+                    <span class="typed-static-1">
+                        <br> &#60; <span class="grey">Sep - Dec 2021 </span>&#62; </span>
+                    <span class="typed-static-1">
+                        <br>
+                        <span class="yellow">Back End Developer</span>
+                    </span>
+                    <span class="typed-static-1">
+                        <br>
+                        <span>- Produce IMAC delta reports of ATM data</span>
+                    </span>
+                    <span class="typed-static-1">
+                        <br>
+                        <span>- Create JUnit tests</span>
+                    </span>
+                </span>
+                <div class="seperator"></div>
+                <a href="/contact" id="contact" title="Contact">
+                    <br>
+                    <br>
+                </a>
+                <span class="typewrite2" data-period="8888" data-type='[ "Contact" ]'>
+                    <span>{"</span>
+                    <span id="typed-main2" class="blue"></span>
+                    <span class="caret">|</span>
+                    <span>"}</span>
+                    <br>
+                    <br>
+                    <span class="typed-static-1">
+                        <span class="purple">{PHONE}</span>
+                        <br>
+                    </span>
+                    <span class="typed-static-1">
+                        <a href="tel:4387654320" data-rel="external" class="blue fa fa-phone" title="phone"></a>
+                        <a href="tel:4387654320" data-rel="external" class="yellow" title="phone"> 438-765-4320</a>
+                        <br>
+                    </span>
+                    <span class="typed-static-1">
+                        <span class="purple">{EMAIL}</span>
+                        <br>
+                    </span>
+                    <span class="typed-static-1">
+                        <a href="mailto:tae@taetae.ca?body=%0D%0A%0D%0A%0D%0AFrom%20your%20personal%20website." class="blue fa fa-envelope" title="email"></a>
+                        <a href="mailto:tae@taetae.ca?body=%0D%0A%0D%0A%0D%0AFrom%20your%20personal%20website." class="yellow" title="email">tae@taetae.ca</a>
+                        <br>
+                    </span>
+                    <span class="typed-static-1">
+                        <span class="purple">{LINKEDIN}</span>
+                        <br>
+                    </span>
+                    <span class="typed-static-1">
+                        <a href="https://linkedin.com/in/taesuzanne" target="_blank" class="blue fa fa-linkedin" title="linkedin"></a>
+                        <a href="https://linkedin.com/in/taesuzanne" target="_blank" class="yellow" title="linkedin">taesuzanne</a>
+                        <br>
+                    </span>
+                    <span class="typed-static-1">
+                        <span class="purple">{GITHUB}</span>
+                        <br>
+                    </span>
+                    <span class="typed-static-1">
+                        <a href="https://github.com/teatae" target="_blank" class="blue fa fa-github-alt" title="github"></a>
+                        <a href="https://github.com/teatae" target="_blank" class="yellow" title="github">teatae</a>
+                        <br>
+                    </span>
+                    <span class="typed-static-1">
+                        <span class="purple">{CURRENT_CITY}</span>
+                        <br>
+                    </span>
+                    <span class="typed-static-1">
+                        <a href="http://maps.google.com/?q=montreal,canada" target="_blank" class="blue fa fa-map-pin" title="location"></a>
+                        <a href="http://maps.google.com/?q=montreal,canada" target="_blank" class="yellow" title="location">Montr&eacute;al</a>
+                        <br>
+                    </span>
+                </span>
+                <div class="seperator"></div>
+                <a href="/chat" id="chat" title="Chat">
+                    <br>
+                    <br>
+                </a>
+                <span>
+                    <span class="typewrite3" data-period="8888" data-type='[ "ask me!" ]'>
+                        <span>{"</span>
+                        <span id="typed-main3" class="blue"></span>
+                        <span class="caret">|</span>
+                        <span>"}</span>
+                    </span>
+                    <br>
+                    <br>
+                    <span id="chat-container">
+                        <span id="chatlog"></span>
+                        <input type="text" id="input-message" class="typed-static-1 typed-static-3 yellow" onkeydown="onSendClick(this)" onblur="fetchReplyGPT(this)" placeholder="QUESTIONS&#160;?" required minlength="2">
+                    </span>
+                </span>
+                <div class="seperator"></div>
+                <a href="/weather" id="weather" title="Weather">
+                    <br>
+                    <br>
+                </a>
+                <span>
+                    <span class="typewrite4" data-period="8888" data-type='[ "weather" ]'>
+                        <span>{"</span>
+                        <span id="typed-main4" class="blue"></span>
+                        <span class="caret">|</span>
+                        <span>"}</span>
+                    </span>
+                    <br>
+                    <span id="clock"></span>
+                    <br>
+                    <span id="name" class="purple"></span>
+                    <br>
+                    <img id="weatherImg" src="assets/unknown.png" width="180" height="180" alt="weather">
+                    <br>
+                    <span id="description" class="yellow"></span>
+                    <br>
+                    <span id="temp"></span>
+                    <br>
+                    <span id="feelsLike"></span>
+                    <br>
+                    <input class="typed-static-1 typed-static-2 grey" type="text" id="city" placeholder="enter city" onkeydown="search(this)" onblur="fetchMobileWeather(this)" name="city" required minlength="2">
+                </span>
+                <div class="seperator"></div>
+                <a href="/projects" id="projects" title="Projects">
+                    <br>
+                    <br>
+                </a>
+                <span class="typewrite5" data-period="8888" data-type='[ "Projects" ]'>
+                    <span>{"</span>
+                    <span id="typed-main5" class="blue"></span>
+                    <span class="caret">|</span>
+                    <span>"}</span>
+                    <br>
+                    <br>
+                    <span class="typed-static-1">
+                        <a href="https://github.com/teatae/BulkEmailSender" target="_blank" class="purple" title="BulkEmailSender">{Bulk Email Sender Application}</a>
+                        <br>
+                        <a href="https://github.com/teatae/BulkEmailSender" target="_blank" class="blue fa fa-github-alt" title="BulkEmailSender"></a>
+                        <span class="yellow">Send mass personalized emails with attachments</span>
+                        <br>
+                        <a href="https://github.com/teatae/MTLjobscraper" target="_blank" class="purple" title="MTLjobscraper">{Montreal Job Scraper}</a>
+                        <br>
+                        <a href="https://github.com/teatae/MTLjobscraper" target="_blank" class="blue fa fa-github-alt" title="MTLjobscraper"></a>
+                        <span class="yellow">Scrape using Selenium and Python</span>
+                        <br>
+                        <br>
+                        <span class="change-font yellow"> ... <br> special thanks to Koko, Cal & Diego for always supporting me </span>
+                    </span>
+                </span>
+                <a href="/footer" id="footer" title="footer">
+                    <br>
+                    <br>
+                </a>
+                <span class="typed-static-1">
+                    <a href="tel:4387654320" data-rel="external" class="blue fa fa-phone" title="phone"></a>
+                    <a href="mailto:tae@taetae.ca?body=%0D%0A%0D%0A%0D%0AFrom%20your%20personal%20website." class="blue fa fa-envelope" title="email"></a>
+                    <a href="https://linkedin.com/in/taesuzanne" target="_blank" class="blue fa fa-linkedin" title="linkedin"></a>
+                    <a href="https://github.com/teatae" target="_blank" class="blue fa fa-github-alt" title="github"></a>
+                    <a href="http://maps.google.com/?q=montreal,canada" target="_blank" class="blue fa fa-map-pin" title="location"></a>
+                    <a id="resume3" href="assets/CV-Tae-Suzanne-Ly%20EN.pdf" target="_blank" class="blue fa fa-file" title="resume"></a>
+                </span>
+                <br>
+                <span>
+                    <br>
+                </span>
+            </div>
+        </div>
+        <script>
+            window.dcrypt = (salt, encoded) => {
+                const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
+                const applySaltToChar = (code) => textToChars(salt).reduce((a, b) => a ^ b, code);
+                return encoded.match(/.{1,2}/g).map((hex) => parseInt(hex, 16)).map(applySaltToChar).map((charCode) => String.fromCharCode(charCode)).join("");
+            };
+            /*function onSdkLoad() {
+                AWS.config.update({
+                    accessKeyId: "configuring",
+                    secretAccessKey: "configuring",
+                    region: "us-east-1",
+                });
+                const lambda = new AWS.Lambda();
+                window.lambda = lambda;
+            }*/
+        </script>
+        <!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.105.0.min.js" onload="onSdkLoad()"></script> -->
+        <script defer src="js/script.js"></script>
+    </body>
+</html>

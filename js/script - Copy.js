@@ -304,6 +304,22 @@ function changeColor(event) {
   event.target.classList.add('clicked');
 }
 
+// Smooth scrolling to section with offset
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute('href'));
+    const headerHeight = document.querySelector('header').offsetHeight; // Adjust this if necessary
+    const offsetTop = target.offsetTop - headerHeight;
+
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth'
+    });
+  });
+});
+
 window.onload = function () {
     const navLinks = document.querySelectorAll('.nav');
     navLinks[0].classList.add('clicked');

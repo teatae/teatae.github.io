@@ -7,4 +7,3 @@ Please feel free to use my website to create your own, I've minified my css and 
 This website is single page, I used my NameCheap domain taetae.ca to host my github.io domain.  
 I've also added my local weather as well as a AI assistant for the navigation of my website.  
 Currently my AI assistant is down due to the API limit on requests for free users of OpenAI (same as ChatGPT). :(  
-Contact me for any questions :)  

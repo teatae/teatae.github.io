@@ -87,11 +87,11 @@
             <h1>// tae_suzanne</h1>
             <div>
                 <a href="#home" class="fa fa-home nav" onclick="changeColor(event)" title="Home"></a>
-                <a href="#aboutme" class="fa fa-id-card nav" onclick="changeColor(event)" title="About"></a>
-                <a href="#contact" class="fa fa-comment nav" onclick="changeColor(event)" title="Contact"></a>
-                <a href="#chat" class="fa fa-otter nav" onclick="changeColor(event)" title="ChatGPT"></a>
-                <a href="#weather" class="fa fa-cloud nav" onclick="changeColor(event)" title="Weather"></a>
+                <a href="#about" class="fa fa-otter nav" onclick="changeColor(event)" title="About me"></a>
+                <a href="#resume" class="fa fa-id-card nav" onclick="changeColor(event)" title="Resume"></a>
                 <a href="#projects" class="fa fa-code nav" onclick="changeColor(event)" title="Projects"></a>
+                <a href="#contact" class="fa fa-comment nav" onclick="changeColor(event)" title="Contact"></a>
+                <a href="#weather" class="fa fa-cloud nav" onclick="changeColor(event)" title="Weather"></a>
             </div>
         </header>
         <div class="main">
@@ -107,8 +107,33 @@
                     <span>"}<br></span>
                 </span>
                 <div class="seperator"></div>
-                <a href="/aboutme" id="aboutme" title="About me"></a>
-                <span class="typewrite1" data-period="8888" data-type='["Resume"]'>
+                <a href="/about" id="about" title="About me"></a>
+                <span>
+                    <span class="typewrite3" data-period="8888" data-type='["about me!"]'>
+                        <span>{"</span>
+                        <span id="typed-main3" class="blue"></span>
+                        <span class="caret">|</span>
+                        <span>"}<br><br></span>
+                    </span>
+                    <span id="chat-container">
+                        <span id="chatlog">
+                            <div class="message typed-static-1 user">Welcome to my website!</div>
+                            <div class="message typed-static-1 bot purple">Everything <a href="#projects" class="fa fa-code nav" onclick="changeColor(event)" title="Projects"></a> is coded from scratch &#128526;</div>
+                            <div class="message typed-static-1 user">Apart from my work, I love...</div>
+                            <div class="message typed-static-1 bot purple">spending time with nature <a href="#weather" class="fa fa-cloud nav" onclick="changeColor(event)" title="Weather">&#10024;</a></div>
+                            <div class="message typed-static-1 user">Please do not hesitate to <a href="#contact" class="fa fa-comment nav" onclick="changeColor(event)" title="Contact"></a> me</div>
+                        </span>
+                    </span>
+                    <!--
+                    <span id="chat-container">
+                        <span id="chatlog"></span>
+                        <input type="text" id="input-message" class="typed-static-1 typed-static-3 yellow" onkeydown="onSendClick(this)" onblur="fetchReplyGPT(this)" placeholder="QUESTIONS&#160;?" required minlength="2">
+                    </span>
+                    -->
+                </span>
+                <div class="seperator"></div>
+                <a href="/resume" id="resume" title="Resume"></a>
+                <span class="typewrite1" data-period="8888" data-type='["resume"]'>
                     <span>{"</span>
                     <span id="typed-main1" class="blue"></span>
                     <span class="caret">|</span>
@@ -131,8 +156,29 @@
                     <span class="typed-static-1"><br>- Create JUnit tests</span>
                 </span>
                 <div class="seperator"></div>
+                <a href="/projects" id="projects" title="Projects"></a>
+                <span class="typewrite5" data-period="8888" data-type='["projects"]'>
+                    <span>{"</span>
+                    <span id="typed-main5" class="blue"></span>
+                    <span class="caret">|</span>
+                    <span>"}<br><br></span>
+                    <span class="typed-static-1">
+                        <a href="https://github.com/teatae/BulkEmailSender" target="_blank" class="purple typed-static-1" title="BulkEmailSender">{Bulk Email Sender Application}</a>
+                        <a href="https://github.com/teatae/BulkEmailSender" target="_blank" class="blue fa fa-github-alt" title="BulkEmailSender"></a>
+                        <span class="yellow typed-static-1">Send mass personalized emails with attachments<br><br></span>
+                        
+                        <a href="https://github.com/teatae/MTLjobscraper" target="_blank" class="purple typed-static-1" title="MTLjobscraper">{Montreal Job Scraper}</a>
+                        <a href="https://github.com/teatae/MTLjobscraper" target="_blank" class="blue fa fa-github-alt" title="MTLjobscraper"></a>
+                        <span class="yellow typed-static-1">Scrape using Selenium and Python<br><br></span>
+
+                        <a href="https://github.com/teatae/teatae.github.io" target="_blank" class="purple typed-static-1" title="MTLjobscraper">{taetae.ca}</a>
+                        <a href="https://github.com/teatae/teatae.github.io" target="_blank" class="blue fa fa-github-alt" title="MTLjobscraper"></a>
+                        <span class="yellow typed-static-1">Website</span>
+                    </span>
+                </span>
+                <div class="seperator"></div>
                 <a href="/contact" id="contact" title="Contact"></a>
-                <span class="typewrite2" data-period="8888" data-type='["Contact"]'>
+                <span class="typewrite2" data-period="8888" data-type='["contact me!"]'>
                     <span>{"</span>
                     <span id="typed-main2" class="blue"></span>
                     <span class="caret">|</span>
@@ -173,20 +219,6 @@
                     </span>
                 </span>
                 <div class="seperator"></div>
-                <a href="/chat" id="chat" title="Chat"></a>
-                <span>
-                    <span class="typewrite3" data-period="8888" data-type='["ask me!"]'>
-                        <span>{"</span>
-                        <span id="typed-main3" class="blue"></span>
-                        <span class="caret">|</span>
-                        <span>"}<br><br></span>
-                    </span>
-                    <span id="chat-container">
-                        <span id="chatlog"></span>
-                        <input type="text" id="input-message" class="typed-static-1 typed-static-3 yellow" onkeydown="onSendClick(this)" onblur="fetchReplyGPT(this)" placeholder="QUESTIONS&#160;?" required minlength="2">
-                    </span>
-                </span>
-                <div class="seperator"></div>
                 <a href="/weather" id="weather" title="Weather"></a>
                 <span>
                     <span class="typewrite4" data-period="8888" data-type='["weather"]'>
@@ -209,26 +241,9 @@
                     <br>
                     <input class="typed-static-1 typed-static-2 grey" type="text" id="city" placeholder="enter city" onkeydown="search(this)" onblur="fetchMobileWeather(this)" name="city" required minlength="2">
                 </span>
-                <div class="seperator"></div>
-                <a href="/projects" id="projects" title="Projects"></a>
-                <span class="typewrite5" data-period="8888" data-type='["projects"]'>
-                    <span>{"</span>
-                    <span id="typed-main5" class="blue"></span>
-                    <span class="caret">|</span>
-                    <span>"}<br><br></span>
-                    <span class="typed-static-1">
-                        <a href="https://github.com/teatae/BulkEmailSender" target="_blank" class="purple typed-static-1" title="BulkEmailSender">{Bulk Email Sender Application}</a>
-                        <a href="https://github.com/teatae/BulkEmailSender" target="_blank" class="blue fa fa-github-alt" title="BulkEmailSender"></a>
-                        <span class="yellow typed-static-1">Send mass personalized emails with attachments<br><br></span>
-                        
-                        <a href="https://github.com/teatae/MTLjobscraper" target="_blank" class="purple typed-static-1" title="MTLjobscraper">{Montreal Job Scraper}</a>
-                        <a href="https://github.com/teatae/MTLjobscraper" target="_blank" class="blue fa fa-github-alt" title="MTLjobscraper"></a>
-                        <span class="yellow typed-static-1">Scrape using Selenium and Python<br><br></span>
-                        
-                        <span class="change-font yellow">...<br>special thanks to Koko, Cal & Diego for always supporting me<br><br></span>
-                    </span>
-                </span>
+                
                 <a href="/footer" id="footer" title="footer"></a>
+                <span class="change-font yellow typed-static-1"><br><br>...<br>special thanks to Koko, Cal & Diego for always supporting me<br><br></span>
                 <span class="typed-static-1">
                     <a href="tel:4387654320" data-rel="external" class="blue fa fa-phone" title="phone"></a>
                     <a href="mailto:tae@taetae.ca?body=%0D%0A%0D%0A%0D%0AFrom%20your%20personal%20website." class="blue fa fa-envelope" title="email"></a>
@@ -237,7 +252,6 @@
                     <a href="http://maps.google.com/?q=montreal,canada" target="_blank" class="blue fa fa-map-pin" title="location"></a>
                     <a id="resume3" href="assets/CV-Tae-Suzanne-Ly%20EN.pdf" target="_blank" class="blue fa fa-file" title="resume"></a>
                 </span>
-                
                 <span class="typed-static-1">
                     <br><br>
                 </span>

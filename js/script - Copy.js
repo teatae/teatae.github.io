@@ -189,6 +189,7 @@ function fetchMobileWeather(ele) {
     }
 }
 
+/*
 const ai = String(window.dcrypt(x, "7c64223a676a5d597c3d583d697d664b75384a777f3b675b3c4d636d6449457f566e36426b37373c376e5964415a634965467b"));
 const model = "text-davinci-003";
 const apiUrl = "https://api.openai.com/v1/engines/" + model + "/completions";
@@ -242,7 +243,7 @@ function appendMessage(message, sender) {
 }
 
 const fetchGPT = async (input) => {
-    /*
+    
     fullLog = fullLog + input + "\n AI:";
     const requestOptions = {
         method: "POST",
@@ -270,10 +271,10 @@ const fetchGPT = async (input) => {
         chatClick.click();
         document.getElementById("input-message").focus();
     }
-    */
-    appendMessage("Oops! This section is under maintenance. The AI assistant API has reached the requests per minute limit.", "bot");
-    chatClick.click();
-    document.getElementById("input-message").focus();
+    
+    //appendMessage("Oops! This section is under maintenance. The AI assistant API has reached the requests per minute limit.", "bot");
+    //chatClick.click();
+    //document.getElementById("input-message").focus();
 };
 
 function onSendClick(ele) {
@@ -297,6 +298,7 @@ function fetchReplyGPT(ele) {
         ele.value = "";
     }
 }
+*/
 
 function changeColor(event) {
   const links = document.querySelectorAll('.nav');

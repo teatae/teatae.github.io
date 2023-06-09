@@ -169,7 +169,7 @@ const fetchWeather = async (city, force) => {
 
 function search(ele) {
     if (event.key === "Enter") {
-        location.href = "#weather";
+        weatherClick.click();
         const input = ele.value.trim();
         if (input) {
             fetchWeather(ele.value, true);
@@ -180,7 +180,7 @@ function search(ele) {
 }
 
 function fetchMobileWeather(ele) {
-    location.href = "#weather";
+    weatherClick.click();
     const input = ele.value.trim();
     if (input) {
         fetchWeather(input, false);
@@ -267,18 +267,18 @@ const fetchGPT = async (input) => {
         const reply = data.choices[0].text.trim();
         fullLog = fullLog + reply + "\n User:";
         appendMessage(reply, "bot");
-        location.href = "#chat";
+        chatClick.click();
         document.getElementById("input-message").focus();
     }
     */
     appendMessage("Oops! This section is under maintenance. The AI assistant API has reached the requests per minute limit.", "bot");
-    location.href = "#chat";
+    chatClick.click();
     document.getElementById("input-message").focus();
 };
 
 function onSendClick(ele) {
     if (event.key === "Enter") {
-        location.href = "#chat";
+        chatClick.click();
         const input = ele.value.trim();
         if (input) {
             appendMessage(input, "user");
@@ -289,7 +289,7 @@ function onSendClick(ele) {
 }
 
 function fetchReplyGPT(ele) {
-    location.href = "#chat";
+    chatClick.click();
     const input = ele.value.trim();
     if (input) {
         appendMessage(input, "user");
@@ -303,6 +303,9 @@ function changeColor(event) {
   links.forEach(link => link.classList.remove('clicked'));
   event.target.classList.add('clicked');
 }
+
+const weatherClick = document.querySelector('a[href="#weather"]');
+const chatClick = document.querySelector('a[href="#chat"]');
 
 // Smooth scrolling to section with offset
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -323,7 +326,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.onload = function () {
     const navLinks = document.querySelectorAll('.nav');
     navLinks[0].classList.add('clicked');
-
+    
     var elements = document.getElementsByClassName("typewrite");
     var el = document.getElementById("typed-main");
     if (el) {

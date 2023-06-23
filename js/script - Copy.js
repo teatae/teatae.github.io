@@ -145,11 +145,11 @@ const fetchWeather = async (city, force) => {
                     }
                     break;
                 default:
-                    imageData = "unknown";
+                    imageData = "pigeon";
                     break;
             }
             document.getElementById("name").innerHTML = myJson.name;
-            document.getElementById("weatherImg").src = "assets/" + imageData + ".png";
+            document.getElementById("weatherImg").src = "assets/" + imageData + ".webp";
             if (imageData == "partlycloudy") {
                 document.getElementById("description").innerHTML = "partly cloudy";
             } else {
@@ -159,7 +159,7 @@ const fetchWeather = async (city, force) => {
             document.getElementById("feelsLike").innerHTML = myJson.main.feels_like + " °C";
         } else {
             document.getElementById("name").innerHTML = "City is not recognized";
-            document.getElementById("weatherImg").src = "assets/unknown.png";
+            document.getElementById("weatherImg").src = "assets/pigeon.webp";
             document.getElementById("description").innerHTML = "Try again";
             document.getElementById("temp").innerHTML = "";
             document.getElementById("feelsLike").innerHTML = "";

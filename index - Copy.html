@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Tae's fun website with AI assistant and weather">
+        <meta name="description" content="Tae's open source Portfolio website">
         <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
         <link async href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="screen">
         <link async href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="screen">
@@ -105,6 +105,11 @@
                     <span id="typed-main" class="yellow"></span>
                     <span class="caret">|</span>
                     <span>"}<br></span>
+                    <span class="typed-static-1">
+                        <a href="http://maps.google.com/?q=Montreal,QC." target="_blank" class="blue fa fa-map-pin" title="location"></a>
+                        <a href="http://maps.google.com/?q=Montreal,QC." target="_blank" title="location">FROM MONTR&Eacute;AL, QC.</a>
+                        <br>
+                    </span>
                 </span>
                 <div class="seperator"></div>
                 <a href="/about" id="about" title="About me"></a>
@@ -117,11 +122,10 @@
                     </span>
                     <span id="chat-container">
                         <span id="chatlog">
-                            <span>Welcome to my website!<br><br></span>
-                            <span class="message typed-static-1 bot purple">Everything <a href="#projects" class="fa fa-code nav" onclick="changeColor(event)" title="Projects"></a> is coded from scratch &#128526;<br></span>
+                            <span class="message typed-static-1 bot purple">Everything <a href="#projects" class="fa fa-code nav" onclick="changeColor(event)" title="Projects"></a> is open source<br></span>
                             <span class="message typed-static-1 user">Apart from my work, I love...<br></span>
-                            <span class="message typed-static-1 bot purple">spending time with nature <a href="#weather" class="fa fa-cloud nav" onclick="changeColor(event)" title="Weather">&#10024;</a><br></span>
-                            <span class="message typed-static-1 user">Please do not hesitate to <a href="#contact" class="fa fa-comment nav" onclick="changeColor(event)" title="Contact"></a> me<br></span>
+                            <span class="message typed-static-1 bot purple">spending my time outdoors <a href="#weather" class="fa fa-cloud nav" onclick="changeColor(event)" title="Weather">&#10024;</a><br></span>
+                            <span class="message typed-static-1 user">Contact info <a href="#contact" class="fa fa-comment nav" onclick="changeColor(event)" title="Contact"></a></span>
                         </span>
                     </span>
                     <!--
@@ -173,7 +177,7 @@
 
                         <a href="https://github.com/teatae/teatae.github.io" target="_blank" class="purple typed-static-1" title="MTLjobscraper">{taetae.ca}</a>
                         <a href="https://github.com/teatae/teatae.github.io" target="_blank" class="blue fa fa-github-alt" title="MTLjobscraper"></a>
-                        <span class="yellow typed-static-1">Website</span>
+                        <span class="yellow typed-static-1">Portfolio website</span>
                     </span>
                 </span>
                 <div class="seperator"></div>
@@ -183,13 +187,6 @@
                     <span id="typed-main2" class="blue"></span>
                     <span class="caret">|</span>
                     <span>"}<br><br></span>
-                    <span class="typed-static-1 purple">{PHONE}<br></span>
-                    <span class="typed-static-1">
-                        <a href="tel:4387654320" data-rel="external" class="blue fa fa-phone" title="phone"></a>
-                        <a href="tel:4387654320" data-rel="external" class="yellow" title="phone"> 438-765-4320</a>
-                        <br>
-                    </span>
-                    <br>
                     <span class="typed-static-1 purple">{EMAIL}<br></span>
                     <span class="typed-static-1">
                         <a href="mailto:tae@taetae.ca?body=%0D%0A%0D%0A%0D%0AFrom%20your%20personal%20website." class="blue fa fa-envelope" title="email"></a>
@@ -210,13 +207,6 @@
                         <a href="https://github.com/teatae" target="_blank" class="yellow" title="github">teatae</a>
                         <br>
                     </span>
-                    <br>
-                    <span class="typed-static-1 purple">{CURRENT_CITY}<br></span>
-                    <span class="typed-static-1">
-                        <a href="http://maps.google.com/?q=montreal,canada" target="_blank" class="blue fa fa-map-pin" title="location"></a>
-                        <a href="http://maps.google.com/?q=montreal,canada" target="_blank" class="yellow" title="location">Montr&eacute;al</a>
-                        <br>
-                    </span>
                 </span>
                 <div class="seperator"></div>
                 <a href="/weather" id="weather" title="Weather"></a>
@@ -231,7 +221,7 @@
                     <br>
                     <span id="name" class="purple"></span>
                     <br>
-                    <img id="weatherImg" src="assets/unknown.png" width="180" height="180" alt="weather">
+                    <img id="weatherImg" src="assets/pigeon.webp" width="180" height="180" alt="weather">
                     <br>
                     <span id="description" class="yellow"></span>
                     <br>
@@ -243,17 +233,16 @@
                 </span>
                 
                 <a href="/footer" id="footer" title="footer"></a>
-                <span class="change-font yellow typed-static-1"><br><br>...<br>special thanks to Koko, Cal & Diego for always supporting me<br><br></span>
+                <span class="change-font yellow typed-static-1" style="font-size: 45%;"><br><br>...<br>special thanks to Koko, Cal & Diego for always supporting me<br><br></span>
                 <span class="typed-static-1">
-                    <a href="tel:4387654320" data-rel="external" class="blue fa fa-phone" title="phone"></a>
+                    <!--<a href="tel:4387654320" data-rel="external" class="blue fa fa-phone" title="phone"></a>-->
                     <a href="mailto:tae@taetae.ca?body=%0D%0A%0D%0A%0D%0AFrom%20your%20personal%20website." class="blue fa fa-envelope" title="email"></a>
                     <a href="https://linkedin.com/in/taesuzanne" target="_blank" class="blue fa fa-linkedin" title="linkedin"></a>
                     <a href="https://github.com/teatae" target="_blank" class="blue fa fa-github-alt" title="github"></a>
-                    <a href="http://maps.google.com/?q=montreal,canada" target="_blank" class="blue fa fa-map-pin" title="location"></a>
                     <a id="resume3" href="assets/CV-Tae-Suzanne-Ly%20EN.pdf" target="_blank" class="blue fa fa-file" title="resume"></a>
                 </span>
-                <span class="typed-static-1">
-                    <br><br>
+                <span class="typed-static-1" style="font-size: 38%;">
+                    <br>© Copyright 2022, Tae-Suzanne Ly<br>
                 </span>
             </div>
         </div>

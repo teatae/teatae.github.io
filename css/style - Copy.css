@@ -35,7 +35,6 @@
 }
 
 section {
-  font-size: min(2.5em,5vw); 
   padding-top: 2em;
   padding-left: max(7vw, 1em); 
   padding-right: max(7vw, 1em); 
@@ -85,6 +84,7 @@ html {
     width: 100%;
     height: 100%;
     display: table;
+    font-size: min(2.5em,5vw); 
 }
 body {
     width: 100%;
@@ -113,7 +113,7 @@ html, body, div, p, span{
     grid-area: main;
     padding: 0 14px;
 }
-h1 {
+header h4 {
     font-weight: 100;
     background: #323b41;
 }

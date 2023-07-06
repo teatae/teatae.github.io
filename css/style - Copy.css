@@ -80,11 +80,14 @@ section {
     margin: 0;
     padding: 0;
 }
-html {
+html{
     width: 100%;
     height: 100%;
     display: table;
     font-size: min(2.5em,5vw); 
+}
+input {
+    font-size: min(2em,4vw); 
 }
 body {
     width: 100%;
@@ -154,6 +157,7 @@ header {
     display: inline-block;
     text-align: center;
     text-transform: uppercase;
+    letter-spacing: 0.1em; /* Adjust as needed */
 }
 .typed-static-3 {
     display: inline-block;

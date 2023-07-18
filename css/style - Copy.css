@@ -133,10 +133,6 @@ header {
 .linenumbers span:hover {
     color: #f1f1f1;
 }
-#avatar {
-    border-radius: 50%;
-    box-shadow: 0 -5px 3px -3px black, 0 5px 3px -3px black;
-}
 #name {
     text-transform: uppercase;
 }
@@ -203,4 +199,16 @@ header {
 }
 .hidden {
     display: none;
+}
+
+#face {
+  border-radius: min(2em,2.4vw);
+  box-shadow:  0 6px 15px 1px rgba(0,0,0,0.6), 0 0 0 1px rgba(0, 0, 0, 0.3);
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+#face:hover {
+  transform: scale(1.1);
+  box-shadow:  0 32px 80px 14px rgba(0,0,0,0.36), 0 0 0 1px rgba(0, 0, 0, 0.3);
 }

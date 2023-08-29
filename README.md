@@ -1,4 +1,4 @@
-Welcome to Tae's personal website!
+Welcome to Tae's portfolio website!
 ==================================
 
 ![preview](https://github.com/teatae/teatae.github.io/blob/main/assets/preview.png?raw=true)

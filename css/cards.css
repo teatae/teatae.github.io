@@ -1,0 +1,229 @@
+/*
+ * Card drawer styles. Load AFTER style.css.
+ *
+ * style.css puts color / background / font on `*`, which beats inheritance,
+ * so everything here is scoped under #cards-app and the card artwork resets
+ * color + background on its descendants.
+ */
+
+/* nav icon highlight, same as the other icons. The icon itself is the fa-* class
+   on the link in index.html, so you can swap it without touching this rule. */
+.nav.nav-cards.clicked { color: #2fcbef; }
+
+#cards-app {
+  --pc-ink: #1c1c1c;
+  --pc-red: #cf2e3a;
+  --pc-paper: #f4f0e4;
+  --pc-purple: #9a99ff;
+  --pc-blue: #2fcbef;
+  --pc-yellow: #e6db74;
+  --pc-grey: #808080;
+  padding-bottom: 2em;
+}
+
+/* ---------- the card ---------- */
+
+/* the card is the size container: every size inside it is in cqw (1cqw = 1% of card width) */
+#cards-app .pc-card {
+  position: relative;
+  width: min(200px, 56vw);
+  aspect-ratio: 5 / 7;
+  margin: 0 auto 0.6em;
+  container-type: inline-size;
+}
+
+/* artwork inherits its ink color and never gets the page's dark background */
+#cards-app .pc-card *,
+#cards-app .pc-token * {
+  color: inherit;
+  background: none;
+}
+
+#cards-app .pc-face,
+#cards-app .pc-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 7cqw;
+  box-shadow: 0 6px 15px 1px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+#cards-app .pc-face {
+  background: var(--pc-paper);
+  color: var(--pc-ink);
+}
+#cards-app .pc-face.pc-red { color: var(--pc-red); }
+
+/* back of the card */
+#cards-app .pc-back { background: var(--pc-paper); }
+#cards-app .pc-back::before {
+  content: "";
+  position: absolute;
+  inset: 5cqw;
+  border-radius: 3.5cqw;
+  background:
+    repeating-linear-gradient(45deg, rgba(33, 33, 33, 0.22) 0 0.7cqw, transparent 0.7cqw 4cqw),
+    repeating-linear-gradient(-45deg, rgba(33, 33, 33, 0.22) 0 0.7cqw, transparent 0.7cqw 4cqw),
+    var(--pc-purple);
+}
+#cards-app .pc-back::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 34cqw;
+  height: 46cqw;
+  transform: translate(-50%, -50%);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: var(--pc-blue);
+}
+
+/* corner indices */
+#cards-app .pc-corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+#cards-app .pc-tl { left: 5cqw; top: 4cqw; }
+#cards-app .pc-br { right: 5cqw; bottom: 4cqw; transform: rotate(180deg); }
+#cards-app .pc-rank { font-size: 20cqw; line-height: 0.8; letter-spacing: -0.05em; }
+#cards-app .pc-suit { width: 12cqw; height: 12cqw; margin-top: 1.5cqw; }
+
+/* pips */
+#cards-app .pc-pip {
+  position: absolute;
+  width: 16cqw;
+  height: 16cqw;
+  transform: translate(-50%, -50%);
+}
+#cards-app .pc-pip.pc-flip { transform: translate(-50%, -50%) rotate(180deg); }
+#cards-app .pc-pip.pc-ace { width: 40cqw; height: 40cqw; }
+
+/* jack / queen / king */
+#cards-app .pc-royal {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 13%;
+  bottom: 13%;
+  border: 0.9cqw solid currentColor;
+  border-radius: 2cqw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#cards-app .pc-royal-letter { font-size: 62cqw; line-height: 1; }
+#cards-app .pc-royal-pip {
+  position: absolute;
+  left: 50%;
+  width: 13cqw;
+  height: 13cqw;
+  margin-left: -6.5cqw;
+}
+#cards-app .pc-royal-top { top: 3cqw; }
+#cards-app .pc-royal-bottom { bottom: 3cqw; transform: rotate(180deg); }
+
+/* joker */
+#cards-app .pc-jk-corner { width: 11cqw; }
+#cards-app .pc-jk-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 10cqw;
+  line-height: 1;
+  letter-spacing: 0;
+}
+#cards-app .pc-joker-star { width: 52cqw; height: 52cqw; }
+
+/* animations */
+@keyframes pc-deal {
+  from { transform: perspective(700px) rotateY(-90deg) translateY(-6%); opacity: 0; }
+  60% { opacity: 1; }
+  to { transform: perspective(700px) rotateY(0) translateY(0); opacity: 1; }
+}
+@keyframes pc-shuffle {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  20% { transform: translateX(-4%) rotate(-3deg); }
+  40% { transform: translateX(4%) rotate(3deg); }
+  60% { transform: translateX(-3%) rotate(-2deg); }
+  80% { transform: translateX(3%) rotate(2deg); }
+}
+#cards-app .pc-deal { animation: pc-deal 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); }
+#cards-app .pc-shuffle { animation: pc-shuffle 0.5s ease-in-out; }
+@media (prefers-reduced-motion: reduce) {
+  #cards-app .pc-deal,
+  #cards-app .pc-shuffle { animation: none; }
+}
+
+/* ---------- text, buttons, history ---------- */
+
+#cards-app .pc-hint:empty { display: none; }
+
+#cards-app .pc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  justify-content: center;
+  margin: 0.5em 0;
+}
+
+#cards-app .pc-btn {
+  font-size: 0.85em;
+  line-height: 1.2;
+  padding: 0.05em 0.6em;
+  color: var(--pc-purple);
+  background: #212121;
+  border: 2px solid var(--pc-purple);
+  border-radius: 0.3em;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+#cards-app .pc-btn--reset {
+  color: var(--pc-yellow);
+  border-color: var(--pc-yellow);
+}
+#cards-app .pc-btn:hover:not(:disabled) { background: var(--pc-purple); color: #212121; }
+#cards-app .pc-btn--reset:hover:not(:disabled),
+#cards-app .pc-btn--reset.pc-attn { background: var(--pc-yellow); color: #212121; }
+#cards-app .pc-btn:focus-visible { outline: 2px solid var(--pc-blue); outline-offset: 3px; }
+#cards-app .pc-btn:disabled {
+  color: var(--pc-grey);
+  border-color: var(--pc-grey);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* drawn-so-far chips */
+#cards-app .pc-history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em;
+  justify-content: center;
+  margin: 0.6em auto 0;
+  max-width: 100%;
+}
+#cards-app .pc-history:empty { display: none; }
+#cards-app .pc-token {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1em;
+  padding: 0 0.3em;
+  font-size: 0.62em;
+  line-height: 1.15;
+  color: var(--pc-ink);
+  background: var(--pc-paper);
+  border-radius: 0.2em;
+}
+#cards-app .pc-token.pc-red { color: var(--pc-red); }
+#cards-app .pc-token.pc-latest { outline: 2px solid var(--pc-yellow); outline-offset: 1px; }
+#cards-app .pc-chip-icon { width: 0.8em; height: 0.8em; }
+
+/* screen-reader-only live region */
+#cards-app .pc-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

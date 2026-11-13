@@ -1,0 +1,172 @@
+/*
+ * Tabbed layout. Load AFTER style.css and cards.css.
+ * (style.css sets color/background on `*`, so everything is class-scoped here.)
+ */
+
+/* ---------- header: title strip + evenly spaced tab bar ---------- */
+header { border-bottom: 1px solid #323b41; }
+header h4 { padding: 0.15em 0.6em; }
+
+.tabs {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: clamp(16px, 3.2vw, 26px);
+}
+.tabs a {
+  flex: 1 1 0; /* equal-width tabs = even spacing across the bar */
+  display: flex;
+  flex-direction: column; /* icon over label on phones */
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+  padding: 0.55em 0.2em 0.45em;
+  line-height: 1;
+  color: #9a9a9a;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+.tabs a *,
+.tabs a i { background: none; color: inherit; } /* beat the per-icon colors in style.css */
+.tabs i { font-size: 1.15em; }
+.tabs a:hover { color: #fff; background: #2b2b2b; }
+.tabs a[aria-current="page"] { color: #2fcbef; border-bottom-color: #2fcbef; }
+.tabs a:focus-visible { outline: 2px solid #2fcbef; outline-offset: -3px; }
+@media (min-width: 700px) {
+  .tabs a { flex-direction: row; gap: 0.5em; } /* icon beside label on wider screens */
+}
+
+/* ---------- pages ---------- */
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--header-h, 4em));
+}
+@supports (height: 100dvh) {
+  .main { min-height: calc(100dvh - var(--header-h, 4em)); }
+}
+.page {
+  flex: 1 0 auto;
+  min-height: 0; /* replaces section's 100vh min-height */
+  padding-top: 0.5em; /* was 2em: pulls the tab title up under the nav bar */
+  padding-bottom: 1em;
+}
+html.js .page:not(.active) { display: none; }
+.page.active { animation: page-in 0.3s ease both; }
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(0.4em); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page.active { animation: none; }
+}
+
+/* ---------- line numbers: start right under the sticky header so "1" isn't hidden ---------- */
+#page > .linenumbers {
+  top: var(--header-h, 2em);
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  padding-top: 0.5em; /* matches .page, so "1" lines up with the first line of the tab */
+}
+
+/* ---------- weather input ---------- */
+#city {
+  display: block;
+  box-sizing: border-box;
+  width: min(12em, 80vw);
+  margin: 0.8em auto 0;
+  padding: 0.2em 0.5em;
+  font-size: clamp(20px, 3.4vw, 30px); /* 20px+ also stops iOS zooming in on focus */
+  line-height: 1.2;
+  color: #fff;
+  border: 2px solid #9a99ff;
+  border-radius: 0.3em;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#city::placeholder { color: #808080; opacity: 1; }
+#city:focus { border-color: #2fcbef; box-shadow: 0 0 0 3px rgba(47, 203, 239, 0.3); }
+
+/* ---------- polish: readability + mobile ---------- */
+html { font-size: clamp(22px, 5.6vw, 40px); color-scheme: dark; } /* was 5vw: text was tiny on phones */
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+#page { line-height: 1.25; } /* a little air between lines; line numbers inherit it so they stay aligned */
+.linenumbers span { color: #4d4d4d; } /* quieter gutter, hover still brightens it */
+.page { text-wrap: balance; }
+
+/* tabs: comfortable tap size, soft highlight on the open one */
+.tabs a { min-height: 44px; }
+.tabs a[aria-current="page"] { background: #232d33; }
+
+/* home */
+#face { display: block; margin: 0 auto 0.6em; max-width: 45vw; height: auto; }
+
+/* weather */
+#weatherImg { max-width: 45vw; height: auto; }
+#temp:not(:empty) { font-size: 1.8em; line-height: 1.1; }
+#feelsLike:not(:empty) { color: #818181; }
+#feelsLike:not(:empty)::before { content: "feels like "; }
+#clock { color: #818181; }
+
+/* cards: bigger buttons and chips for thumbs */
+#cards-app .pc-btn { min-height: 44px; padding: 0.1em 1em; font-size: 0.9em; }
+@media (max-width: 600px) {
+  #cards-app .pc-token { font-size: 0.8em; }
+}
+
+/* ---------- no scrollbars anywhere (scrolling itself still works) ---------- */
+html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
+::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+/* ---------- thinner header: slimmer title strip + slimmer tab bar ---------- */
+header h4 { font-size: max(16px, 0.6em); padding: 0.1em 0.8em; }
+.tabs { font-size: clamp(15px, 2.6vw, 20px); }
+.tabs a { min-height: 40px; padding: 0.25em 0.1em 0.2em; gap: 0.15em; border-bottom-width: 2px; }
+@media (min-width: 700px) {
+  .tabs a { min-height: 0; padding: 0.35em 0.2em 0.3em; }
+}
+
+/* ---------- fit-to-screen: every tab fits the window, no page scrolling ---------- */
+/* (gated on html.js, so without JavaScript the pages still stack and scroll normally) */
+html.js {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  font-size: clamp(18px, min(5.6vw, 4.2vh), 40px); /* text also shrinks on short windows */
+}
+html.js #page {
+  height: 100vh;
+  height: 100dvh; /* phones: the visible height, not the height behind the browser bars */
+  overflow: hidden;
+  grid-template-rows: auto minmax(0, 1fr); /* header, then the page fills the rest */
+}
+html.js .main { min-height: 0; overflow: hidden; }
+html.js .page {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto; /* safety net for very short screens; the scrollbar stays hidden */
+  padding-bottom: 0.5em;
+}
+html.js .page.active { display: flex; flex-direction: column; }
+/* spacers center the content vertically, and collapse if there isn't room */
+html.js .page.active::before,
+html.js .page.active::after { content: ""; flex: 1 1 0; }
+
+/* images and the card scale with the screen height so each tab fits */
+#face { width: min(180px, 24vh, 45vw); width: min(180px, 24dvh, 45vw); }
+#weatherImg { width: min(180px, 22vh, 45vw); width: min(180px, 22dvh, 45vw); }
+#cards-app { padding-bottom: 0.4em; }
+#cards-app .pc-card { width: min(200px, 56vw, 24vh); width: min(200px, 56vw, 24dvh); }
+
+/* drawn cards: one sideways strip instead of rows that grow down the page */
+#cards-app .pc-history { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; }
+#cards-app .pc-history > :first-child { margin-left: auto; }  /* centers the strip until it overflows */
+#cards-app .pc-history > :last-child { margin-right: auto; }
+#cards-app .pc-token { flex: none; }
+
+/* desktop nav: exactly one character space between the icon and its label */
+@media (min-width: 700px) {
+  .tabs a { gap: 1ch; }
+}

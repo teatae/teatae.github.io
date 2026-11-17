@@ -143,7 +143,7 @@
 
   app.insertAdjacentHTML(
     "beforeend",
-    '<div class="pc-card" role="img" aria-label="Face-down card"></div>' +
+    '<div class="pc-card" role="button" tabindex="0" aria-label="Draw a card"></div>' +
       '<span class="typed-static-1 purple pc-name"></span>' +
       '<span class="typed-static-1"><span class="purple">{LEFT}</span> <span class="yellow pc-count"></span></span>' +
       '<span class="typed-static-1 grey pc-hint"></span>' +

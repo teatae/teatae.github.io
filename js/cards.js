@@ -240,6 +240,16 @@
   }
 
   drawBtn.addEventListener("click", draw);
+
+  cardEl.addEventListener("click", draw);
+  
+  cardEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      draw();
+    }
+  });
+  
   resetBtn.addEventListener("click", reset);
 
   showBack(false);
